@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="event-create.component.css">
+
+<div class='animation-example'>
+  <div class='item'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='item'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='item'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='item'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='item -type2'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='item -type2'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='item -type2'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='item -type2'>
+      <div class='line'></div>
+      <div class='dot'></div>
+      <div class='circle'></div>
+  </div>
+  <div class='center'>
+      <div class='circle'></div>
+      <div class='circle'></div>
+      <div class='circle'></div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="brand-logo"></div>
+    <div class="brand-title">SpotlightSeats</div>
+    <form class="inputs" #eventCreationForm="ngForm" (ngSubmit)="onSubmit()">
+      <label>EVENT NAME</label>
+      <input type="text" name="eventName" placeholder="enter event name here"  [(ngModel)]="event.eventName"/>
+      <label>EVENT LOCATION</label>
+      <input type="text" name="eventLocation" placeholder="enter event location here" [(ngModel)]="event.eventLocation"/>
+      <label>TOTAL TICKETS</label>
+      <input type="number" min="100" name="totalTickets" placeholder="enter total ticket count" [(ngModel)]="event.totalTickets"/>
+      <button type="submit">CREATE</button>
+    </form>
+    <a href="#">SpotlightSeats</a>
+</div> 

@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="event-management.component.css">
+
+<div class='animation-example'>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='center'>
+        <div class='circle'></div>
+        <div class='circle'></div>
+        <div class='circle'></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="brand-logo"></div>
+    <div class="brand-title">Event {{ eventName }}</div>
+    <form class="inputs">
+      <label>EVENT NAME: {{ eventName }}</label>
+      <label>EVENT LOCATION: {{ eventLocation }} </label>
+      <label>TOTAL TICKETS: {{ eventTotalTickets }}</label>
+      <button type="submit">RELEASE TICKETS</button>
+      <button type="submit">EVENT ANALYTICS</button>
+      <button *ngIf="eventId" (click)="deleteEvent(eventId)">DELETE EVENT</button>
+    </form>
+    <a href="#">SpotlightSeats</a>
+</div> 

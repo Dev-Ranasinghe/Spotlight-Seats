@@ -1,0 +1,88 @@
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+        <label for="tab-1" class="tab">Sign In</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up">
+        <label for="tab-2" class="tab">Sign Up</label>
+        <div class="login-form">
+            <div class="sign-in-htm">
+              <div class="user-type d-flex gap-5">
+                <div class="d-flex gap-2">
+                    <input type="radio" id="admin-sign-in-radio" name="userType" [(ngModel)]="signInData.userType" value="Admin" required>
+                    <label for="admin-radio">Admin</label>
+                  </div>
+                <div class="d-flex gap-2">
+                  <input type="radio" id="customer-sign-in-radio" name="userType" [(ngModel)]="signInData.userType" value="Customer" required>
+                  <label for="customer-radio">Customer</label>
+                </div>
+                <div class="d-flex gap-2">
+                  <input type="radio" id="vendor-sign-in-radio" name="userType" [(ngModel)]="signInData.userType" value="Vendor" required>
+                  <label for="vendor-radio">Vendor</label>
+                </div>
+              </div>
+                <form #signInForm="ngForm" (ngSubmit)="onSignIn()">
+                    <div class="group">
+                        <label for="signin-user" class="label">Username</label>
+                        <input name="username" id="signin-user" type="text" [(ngModel)]="signInData.username" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="signin-pass" class="label">Password</label>
+                        <input name="password" id="signin-pass" type="password" [(ngModel)]="signInData.password" class="input" required>
+                    </div>
+                    <div class="group">
+                        <input name="keep-sign-in" id="check" type="checkbox" class="check" checked>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                        <input name="sign-in" type="submit" class="button" value="Sign In">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="sign-up-htm">
+              <div class="user-type d-flex gap-5">
+                <div class="d-flex gap-2">
+                  <input type="radio" [(ngModel)]="signUpData.userType" id="customer-radio" name="user-grp" value="Customer" required>
+                  <label for="customer-radio">Customer</label>
+                </div>
+                <div class="d-flex gap-2">
+                  <input type="radio" [(ngModel)]="signUpData.userType" id="vendor-radio" name="user-grp" value="Vendor" required>
+                  <label for="vendor-radio">Vendor</label>
+                </div>
+              </div>
+                <form #signUpForm="ngForm" (ngSubmit)="onSignUp()">
+                    <div class="group">
+                        <label for="signup-user" class="label">Name</label>
+                        <input name="name" id="signup-user" [(ngModel)]="signUpData.name" type="text" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="user-contact" class="label">Contact</label>
+                        <input name="contact" id="user-contact" [(ngModel)]="signUpData.contact" type="text" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="signup-pass" class="label">Password</label>
+                        <input name="sign-up-password" id="signup-pass" [(ngModel)]="signUpData.password" type="password" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="repeat-pass" class="label">Repeat Password</label>
+                        <input name="sign-up-repeat-password" id="repeat-pass" type="password" [(ngModel)]="signUpData.repeatPassword" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="signup-email" class="label">Email Address</label>
+                        <input name="sign-up-email" id="signup-email" [(ngModel)]="signUpData.username" type="email" class="input" required>
+                    </div>
+                    <div class="group">
+                        <input name="sign-up" type="submit" class="button" value="Sign Up">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <label for="tab-1">Already Member?</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
