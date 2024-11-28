@@ -50,12 +50,12 @@
 
 <div class="container">
     <div class="brand-logo"></div>
-    <div class="brand-title">Vendor Name</div>
+    <div class="brand-title">{{vendorName}}</div>
     <form class="inputs">
-      <label>VENDOR NAME</label>
-      <label>VENDOR EMAIL</label>
-      <label>VENDOR CONTACT</label>
-      <button type="submit">DELETE VENDOR</button>
+      <label>VENDOR NAME: {{vendorName}}</label>
+      <label>VENDOR EMAIL: {{vendorEmail}}</label>
+      <label>VENDOR CONTACT: {{vendorContact}}</label>
+      <button (click)="deleteVendor(vendorId)">DELETE VENDOR</button>
     </form>
     <a href="#">SpotlightSeats</a>
 </div> 

@@ -304,7 +304,7 @@ public class CliMain {
             System.out.println("\n--- Customer Menu ---");
             System.out.println("1. Book Ticket");
             System.out.println("2. View Booked Tickets");
-            System.out.println("5. Return to Main Menu");
+            System.out.println("3. Return to Main Menu");
             System.out.print("Enter your choice: ");
 
             int choice = menuController.getNumberInRange(1,3);

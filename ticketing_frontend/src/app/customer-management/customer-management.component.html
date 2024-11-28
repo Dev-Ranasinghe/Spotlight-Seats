@@ -50,13 +50,13 @@
 
 <div class="container">
     <div class="brand-logo"></div>
-    <div class="brand-title">Customer Name</div>
+    <div class="brand-title">{{customerName}}</div>
     <form class="inputs">
-      <label>CUSTOMER NAME</label>
-      <label>CUSTOMER EMAIL</label>
-      <label>CUSTOMER CONTACT</label>
-      <label>CUSTOMER PRIORITY</label>
-      <button type="submit">DELETE CUSTOMER</button>
+      <label>CUSTOMER NAME: {{customerName}}</label>
+      <label>CUSTOMER EMAIL: {{customerEmail}}</label>
+      <label>CUSTOMER CONTACT: {{customerContact}}</label>
+      <label>CUSTOMER PRIORITY: {{customerPriority}}</label>
+      <button (click)="deleteCustomer(customerId)">DELETE CUSTOMER</button>
     </form>
     <a href="#">SpotlightSeats</a>
 </div> 

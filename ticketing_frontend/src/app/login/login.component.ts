@@ -64,7 +64,6 @@ constructor(private loginService: LoginService, private router: Router) { }
   }
 
   onSignUp(){
-
     if(this.signUpData.userType === "Customer"){
       let customer:Customer = {
         customerName: this.signUpData.name,
@@ -92,5 +91,13 @@ constructor(private loginService: LoginService, private router: Router) { }
 
         });
     }   
+  }
+
+  vendorDashboardDirect(){
+    this.router.navigate(['/vendor-dashboard']);
+  }
+
+  customerDashboardDirect(){
+    this.router.navigate(['/customer-dashboard'])
   }
 }

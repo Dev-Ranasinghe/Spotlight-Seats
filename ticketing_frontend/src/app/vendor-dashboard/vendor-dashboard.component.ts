@@ -30,7 +30,7 @@ export class VendorDashboardComponent implements OnInit {
       this.loadEvents();
       console.log(vendor);
       });
-  }
+  }  
 
   loadEvents(): void {
     this.eventService.getEventsByVendorId(this.vendorId).subscribe(
@@ -79,6 +79,5 @@ export class VendorDashboardComponent implements OnInit {
       );
     }
   }
-  
 
 }

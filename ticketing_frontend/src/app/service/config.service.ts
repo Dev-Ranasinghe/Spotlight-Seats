@@ -23,22 +23,19 @@ export class ConfigService {
     return this.http.get<number>(`${this.apiUrlConfig}/available-tickets`);
   }
 
-  // updateSystemParameter(key: string, value: string): void {
-  //   const params = new HttpParams()
-  //     .set('key', key)
-  //     .set('value', value);
+  getCustomerRetrievalRate(): Observable<string> {
+    return this.http.get<string>(`${this.apiUrlConfig}/customer-retrieval-rate`);
+  }
 
-  //   this.http.put(`${this.apiUrlConfig}`, {params});
-  // }
+  getTicketReleaseRate(): Observable<string> {
+    return this.http.get<string>(`${this.apiUrlConfig}/ticket-release-rate`);
+  }
 
-  updateSystemParameter(key: string, value: string): void {
+  updateSystemParameter(key: string, value: string): Observable<void> {
     const params = new HttpParams()
       .set('key', key)
       .set('value', value);
-  
-    this.http.put(`${this.apiUrlConfig}`, null, { params }).subscribe({
-      next: () => console.log('System parameter updated successfully.'),
-      error: (err) => console.error('Error updating system parameter:', err)
-    });
+
+    return this.http.put<void>(`${this.apiUrlConfig}`, null, { params });
   }  
 }

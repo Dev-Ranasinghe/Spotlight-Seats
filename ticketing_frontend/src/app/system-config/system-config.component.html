@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="system-config.component.css">
+ 
+<div class="content-box">
+    <div class='animation-example'>
+        <div class='item'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='item'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='item'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='item'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='item -type2'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='item -type2'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='item -type2'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='item -type2'>
+            <div class='line'></div>
+            <div class='dot'></div>
+            <div class='circle'></div>
+        </div>
+        <div class='center'>
+            <div class='circle'></div>
+            <div class='circle'></div>
+            <div class='circle'></div>
+        </div>
+      </div>
+      
+      <div class="container">
+          <div class="brand-logo"></div>
+          <div class="brand-title">System Configuration</div>
+          <!-- <form class="inputs">
+            <label>TOTAL TICKETS: {{totalTickets}}</label>
+            <label>MAX TICKET CAPACITY: {{maxTicketCapacity}}</label>
+            <label>TICKET RELEASE RATE: {{ticketReleaseRate}}</label>
+            <label>CUSTOMER RETRIEAVAL RATE: {{customerRetrievalRate}}</label>
+          </form> -->
+
+          <form class="inputs" (submit)="updateMaxTicketCapacity()">
+            <label>MAX TICKET CAPACITY</label>
+            <input
+              type="number"
+              [(ngModel)]="maxTicketCapacity"
+              name="maxTicketCapacity"
+              placeholder="Enter max ticket capacity"
+            />
+            <button type="submit">UPDATE</button>
+          </form>
+          
+          <form class="inputs" (submit)="updateTicketReleaseRate()">
+            <label>TICKET RELEASE RATE</label>
+            <input
+              type="number"
+              [(ngModel)]="ticketReleaseRate"
+              name="ticketReleaseRate"
+              placeholder="Enter Ticket Release Rate"
+            />
+            <button type="submit">UPDATE</button>
+          </form>
+          
+          <form class="inputs" (submit)="updateCustomerRetrievalRate()">
+            <label>CUSTOMER RETRIEAVAL RATE</label>
+            <input
+              type="number"
+              [(ngModel)]="customerRetrievalRate"
+              name="customerRetrievalRate"
+              placeholder="Enter customer retrieval rate"
+            />
+            <button type="submit">UPDATE</button>
+          </form>
+          
+                  
+          <a href="#">SpotlightSeats</a>
+      </div> 
+</div>
+
+<footer>
+    <div >
+      <div class="col-lg-12">
+        <p>Copyright © SpotlightSeats. All rights reserved.</p>
+      </div>
+    </div>
+</footer>

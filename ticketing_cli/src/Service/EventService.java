@@ -161,8 +161,8 @@ public class EventService implements Runnable {
             String[] events = responseBody.substring(1, responseBody.length() - 1).split("\\},\\{");
 
             // Print the headers
-            System.out.println(String.format("%-10s %-30s %-20s %-15s %-15s", "Event ID", "Event Name", "Location", "Total Tickets", "Status"));
-            System.out.println("-----------------------------------------------------------------------------------------------");
+            System.out.println(String.format("%-10s %-30s %-20s %-15s %-15s %-15s", "Event ID", "Event Name", "Location", "Total Tickets", "Ticket Price", "Status"));
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
 
             for (String event : events) {
                 // Clean up each event string by removing any curly braces left
@@ -172,7 +172,7 @@ public class EventService implements Runnable {
                 String[] keyValuePairs = event.split(",");
 
                 // Initialize variables to store extracted values
-                String eventId = "", eventName = "", eventLocation = "", totalTickets = "", eventStatus = "";
+                String eventId = "", eventName = "", eventLocation = "", totalTickets = "", ticketPrice = "", eventStatus = "";
 
                 // Iterate over each key-value pair and extract values based on keys
                 for (String pair : keyValuePairs) {
@@ -195,6 +195,9 @@ public class EventService implements Runnable {
                         case "totalTickets":
                             totalTickets = value;
                             break;
+                        case "ticketPrice":
+                            ticketPrice = value;
+                            break;
                         case "eventStatus":
                             eventStatus = value.equals("true") ? "Active" : "Inactive";
                             break;
@@ -202,8 +205,8 @@ public class EventService implements Runnable {
                 }
 
                 // Print each row in a formatted table format
-                System.out.println(String.format("%-10s %-30s %-20s %-15s %-15s",
-                        eventId, eventName, eventLocation, totalTickets, eventStatus));
+                System.out.println(String.format("%-10s %-30s %-20s %-15s %-15s %-15s",
+                        eventId, eventName, eventLocation, totalTickets, ticketPrice, eventStatus));
             }
         } catch (Exception e) {
             return;

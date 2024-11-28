@@ -96,6 +96,7 @@ public class EventController {
         String eventName = menuController.getValidInput("Enter Event Name: ", "string");
         String eventLocation = menuController.getValidInput("Enter Event Location: ", "string");
         String totalTickets = menuController.getValidInput("Enter Total Tickets (number): ", "number");
+        String ticketPrice = menuController.getValidInput("Enter a single Ticket Price (number): ", "number");
         try {
         if(Integer.parseInt(totalTickets) > availableTickets){
             throw new Exception("Error !!! Only " + availableTickets + " more tickets can be handled by the system.");
@@ -107,8 +108,8 @@ public class EventController {
         configParameters.updateProperty("totalTickets", String.valueOf(updatedTotTickets));
         // Create JSON string from user inputs
         String eventJson = String.format(
-                "{\"eventName\": \"%s\", \"eventLocation\": \"%s\", \"totalTickets\": %s, \"eventStatus\": %b, \"vendor\": {\"vendorId\": %s}}",
-                eventName, eventLocation, totalTickets, eventStatus, vendorId);
+                "{\"eventName\": \"%s\", \"eventLocation\": \"%s\", \"totalTickets\": %s, \"ticketPrice\": %s, \"eventStatus\": %b, \"vendor\": {\"vendorId\": %s}}",
+                eventName, eventLocation, totalTickets, ticketPrice, eventStatus, vendorId);
 
         // Create and start a thread to save the event
         EventService service = new EventService("save", null, eventJson, null);

@@ -49,11 +49,30 @@ export class AdminDashboardComponent implements OnInit{
     );
   }
 
-  vendorManagementDirect(){
-    this.router.navigate(['/vendor-management'])
-  }
+  vendorManagementDirect(vendor: Vendor): void {
+    this.router.navigate(['/vendor-management'], {
+      queryParams: {
+        vendorName: vendor.vendorName,
+        vendorContact: vendor.vendorContact,
+        vendorEmail: vendor.vendorEmail,
+        vendorId: vendor.vendorId
+      }
+    });
+  }  
 
-  customerManagementDirect(){
-    this.router.navigate(['/customer-management'])
+  customerManagementDirect(customer: Customer){
+    this.router.navigate(['/customer-management'], {
+      queryParams: {
+        customerName: customer.customerName,
+        customerContact: customer.customerContact,
+        customerEmail: customer.customerEmail,
+        customerId: customer.customerId,
+        customerPriority: customer.customerPriority
+      }
+    });
+  }
+  
+  systemConfigDirect(){
+    this.router.navigate(['/system-config']);
   }
 }

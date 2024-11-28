@@ -22,4 +22,9 @@ export class VendorService {
   getAllVendors(): Observable<Vendor[]> {
     return this.http.get<Vendor[]>(`${this.apiUrlVendor}`);
   }
+
+  // Method to delete a vendor by ID
+  deleteVendor(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrlVendor}/${id}`);
+  }
 }

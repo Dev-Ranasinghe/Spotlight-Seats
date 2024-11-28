@@ -8,17 +8,22 @@ import { Customer } from '../model/customer.model';
 })
 export class CustomerService {
 
-  private apiUrlVendor ='http://localhost:8080/api/customer'; 
+  private apiUrlCustomer ='http://localhost:8080/api/customer'; 
 
   constructor(private http: HttpClient) { }
 
   getCustomerByEmail(username: string): Observable<Customer> {
     // Directly include the email in the URL path to match the backend's @PathVariable setup
-    return this.http.get<Customer>(`${this.apiUrlVendor}/email/${username}`);
+    return this.http.get<Customer>(`${this.apiUrlCustomer}/email/${username}`);
   }
   
   // Method to get all vendors
   getAllCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(`${this.apiUrlVendor}`);
+    return this.http.get<Customer[]>(`${this.apiUrlCustomer}`);
+  }
+
+  // Method to delete a vendor by ID
+  deleteCustomer(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrlCustomer}/${id}`);
   }
 }

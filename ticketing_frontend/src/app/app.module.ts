@@ -13,6 +13,7 @@ import { CustomerDashboardComponent } from './customer-dashboard/customer-dashbo
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { VendorManagementComponent } from './vendor-management/vendor-management.component';
 import { CustomerManagementComponent } from './customer-management/customer-management.component';
+import { SystemConfigComponent } from './system-config/system-config.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CustomerManagementComponent } from './customer-management/customer-mana
     CustomerDashboardComponent,
     AdminDashboardComponent,
     VendorManagementComponent,
-    CustomerManagementComponent
+    CustomerManagementComponent,
+    SystemConfigComponent
   ],
   imports: [
     BrowserModule,

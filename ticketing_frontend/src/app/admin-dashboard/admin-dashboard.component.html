@@ -33,6 +33,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
+                      <li><a (click)=systemConfigDirect();> System Configuration </a></li> 
                       <li><a href="#">Log Out</a></li>
                   </ul>   
                   <!-- ***** Menu End ***** -->
@@ -125,7 +126,7 @@
         <div *ngFor="let vendor of vendors"  class="col-lg-3 col-md-6">
             <div class="item">
                 <div class="thumb">
-                  <a (click)=vendorManagementDirect();><img src="/image/minimalist-blue-e0q5nh2rivmv9eio.jpg" alt=""></a>
+                  <a (click)=vendorManagementDirect(vendor);><img src="/image/minimalist-blue-e0q5nh2rivmv9eio.jpg" alt=""></a>
                 </div>
                 <div class="down-content">
                 <h4>{{ vendor.vendorName }}</h4> <!-- Display event name dynamically -->
@@ -154,7 +155,7 @@
         <div *ngFor="let customer of customers" class="col-lg-3 col-md-6">
             <div class="item">
                 <div class="thumb">
-                  <a (click)=customerManagementDirect();><img src="/image/minimalist-blue-e0q5nh2rivmv9eio.jpg" alt=""></a>
+                  <a (click)=customerManagementDirect(customer);><img src="/image/minimalist-blue-e0q5nh2rivmv9eio.jpg" alt=""></a>
                 </div>
                 <div class="down-content">
                 <h4>{{ customer.customerName }}</h4> <!-- Display customer name dynamically -->
