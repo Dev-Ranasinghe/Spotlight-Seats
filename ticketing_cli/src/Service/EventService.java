@@ -60,6 +60,9 @@ public class EventService implements Runnable {
                         activateEvent(eventId);
                     }
                     break;
+                case "activeEvents":
+                    fetchActiveEvents();
+                    break;
                 default:
                     System.out.println("Invalid task specified.");
             }
@@ -67,6 +70,84 @@ public class EventService implements Runnable {
             lock.unlock();
         }
     }
+
+    public void fetchActiveEvents() {
+        lock.lock();
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:8080/api/event/total-events/active"))
+                    .GET()
+                    .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            String responseBody = response.body().trim();
+
+            if (responseBody.isEmpty() || responseBody.equals("[]")) {
+                System.out.println("No active events found.");
+                return;
+            }
+
+            // Remove the outer brackets [ ] and split the JSON objects by "},{" (assuming uniform formatting)
+            String[] events = responseBody.substring(1, responseBody.length() - 1).split("\\},\\{");
+
+            // Print the headers
+            System.out.println(String.format("%-10s %-30s %-20s %-15s %-15s %-15s",
+                    "Event ID", "Event Name", "Location", "Total Tickets", "Ticket Price", "Status"));
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+
+            for (String event : events) {
+                // Clean up each event string by removing any curly braces left
+                event = event.replace("{", "").replace("}", "");
+
+                // Split key-value pairs by commas
+                String[] keyValuePairs = event.split(",");
+
+                // Initialize variables to store extracted values
+                String eventId = "", eventName = "", eventLocation = "", totalTickets = "", ticketPrice = "", eventStatus = "";
+
+                // Iterate over each key-value pair and extract values based on keys
+                for (String pair : keyValuePairs) {
+                    String[] keyValue = pair.split(":");
+
+                    // Remove any surrounding quotes from keys and values
+                    String key = keyValue[0].trim().replaceAll("\"", "");
+                    String value = keyValue[1].trim().replaceAll("\"", "");
+
+                    switch (key) {
+                        case "eventId":
+                            eventId = value;
+                            break;
+                        case "eventName":
+                            eventName = value;
+                            break;
+                        case "eventLocation":
+                            eventLocation = value;
+                            break;
+                        case "totalTickets":
+                            totalTickets = value;
+                            break;
+                        case "ticketPrice":
+                            ticketPrice = value;
+                            break;
+                        case "eventStatus":
+                            eventStatus = value.equals("true") ? "Active" : "Inactive";
+                            break;
+                    }
+                }
+
+                // Print each row in a formatted table format
+                System.out.println(String.format("%-10s %-30s %-20s %-15s %-15s %-15s",
+                        eventId, eventName, eventLocation, totalTickets, ticketPrice, eventStatus));
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching active events: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+
 
     public String fetchTotalTicketsByEventId(int eventId) {
         lock.lock();

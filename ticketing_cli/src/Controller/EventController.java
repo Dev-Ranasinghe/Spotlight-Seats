@@ -4,6 +4,9 @@ import Service.EventService;
 import SystemParameters.ConfigParameters;
 
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class EventController {
 
@@ -19,6 +22,26 @@ public class EventController {
             thread.join();  // Waits for this thread to complete before moving on
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void getActiveEvents() {
+        // Use a fixed thread pool for managing threads
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        try {
+            // Submit the service task to the executor
+            EventService service = new EventService("activeEvents", null, null, null);
+            Future<?> future = executorService.submit(service);
+
+            // Wait for the task to complete
+            future.get(); // Blocks until the task completes or throws an exception
+        } catch (Exception e) {
+            System.err.println("Error while executing active events task: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            // Ensure the executor service is properly shut down
+            executorService.shutdown();
         }
     }
 

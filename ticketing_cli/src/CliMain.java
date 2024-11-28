@@ -43,7 +43,7 @@ public class CliMain {
 
     private static void displayWelcomeTable() {
         System.out.println("\n==============================================");
-        System.out.println("       Welcome to the Ticketing System");
+        System.out.println("       Welcome to the Spotlight Seats");
         System.out.println("==============================================");
         System.out.println("       Please select your role:");
         System.out.println("        1. Admin");
@@ -87,7 +87,7 @@ public class CliMain {
         }
     }
 
-    private static void handleCustomerLogin() {
+    private static void handleCustomerLogin() throws Exception {
         String response = menuController.getYesOrNo("Are you a registered customer? (y/n): ");
 
         CustomerController customerController = new CustomerController();
@@ -97,7 +97,7 @@ public class CliMain {
             if (customerLogin(customerController)) {
                 System.out.println("Login successful.");
                 // After successful login, proceed directly to vendor menu
-                customerMenu(customerController, ticketPoolController); // Pass the vendorController object
+                customerMenu(customerController, ticketPoolController); // Pass the customerController object
             } else {
                 System.out.println("Invalid login. Returning to main menu.");
             }
@@ -201,7 +201,7 @@ public class CliMain {
             String option5 = "5. Return to Main";
 
             // Define the fixed width for the table (same as the longest line)
-            int tableWidth = 40;  // You can adjust this width to your preference
+            int tableWidth = 40;
 
             // Print the vendor menu in a simple format
             String border = "+" + "-".repeat(tableWidth - 2) + "+";  // Border line
@@ -263,6 +263,63 @@ public class CliMain {
         }
     }
 
+    private static void customerMenu(CustomerController customerController, TicketPoolController ticketPoolController) throws Exception {
+        boolean exitCustomerMenu = false;
+        EventController eventController = new EventController();
+
+        while (!exitCustomerMenu) {
+
+            String username = "VendorName";  // replace with vendorController.getUsername()
+
+            // Define the header and options
+            String header = "--- " + customerController.getUsername() + " Customer Menu ---";
+            String option1 = "1. Book Tickets";
+            String option2 = "2. View Purchase History";
+            String option3 = "3. Return to Main Menu";
+
+            // Define the fixed width for the table (same as the longest line)
+            int tableWidth = 40;
+
+            // Print the vendor menu in a simple format
+            String border = "+" + "-".repeat(tableWidth - 2) + "+";  // Border line
+
+            // Print top border
+            System.out.println("\n" + border);
+
+            // Print header line
+            System.out.println("| " + String.format("%-" + (tableWidth - 2) + "s", header) + " |");
+
+            // Print border after header
+            System.out.println(border);
+
+            // Print the options
+            System.out.println("| " + String.format("%-" + (tableWidth - 2) + "s", option1) + " |");
+            System.out.println("| " + String.format("%-" + (tableWidth - 2) + "s", option2) + " |");
+            System.out.println("| " + String.format("%-" + (tableWidth - 2) + "s", option3) + " |");
+
+            // Print bottom border of the table
+            System.out.println(border);
+
+            // Prompt for user input
+            int choice = menuController.getNumberInRange(1,3);
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Displaying active events...");
+                    eventController.getActiveEvents();
+                    break;
+                case 2:
+                    System.out.println("Displaying customer purchase history...");
+                    break;
+                case 3:
+                    exitCustomerMenu = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice, please try again.");
+            }
+        }
+    }
+
     public static void setSystemParameters() {
         try {
             displaySystemParameters(configParameters);
@@ -294,34 +351,6 @@ public class CliMain {
             e.printStackTrace();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
-    }
-
-    private static void customerMenu(CustomerController customerController, TicketPoolController ticketPoolController) {
-        boolean exitCustomerMenu = false;
-
-        while (!exitCustomerMenu) {
-            System.out.println("\n--- Customer Menu ---");
-            System.out.println("1. Book Ticket");
-            System.out.println("2. View Booked Tickets");
-            System.out.println("3. Return to Main Menu");
-            System.out.print("Enter your choice: ");
-
-            int choice = menuController.getNumberInRange(1,3);
-
-            switch (choice) {
-                case 1:
-                    System.out.println("Displaying available events...");
-                    break;
-                case 2:
-                    System.out.println("Booking a ticket...");
-                    break;
-                case 3:
-                    exitCustomerMenu = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice, please try again.");
-            }
         }
     }
 }
