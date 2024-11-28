@@ -29,4 +29,13 @@ export class EventService {
     return this.http.delete<void>(`${this.apiUrlEvent}/${eventId}`);
   }  
   
+  activateEvent(eventId: number): Observable<string> {
+    return this.http.post(`${this.apiUrlEvent}/${eventId}/activate`, null, {
+      responseType: 'text', // Specify plain text response type
+    });
+  }  
+
+  isEventActive(eventId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrlEvent}/${eventId}/isActive`);
+  }
 }

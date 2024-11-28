@@ -50,12 +50,13 @@
 
 <div class="container">
     <div class="brand-logo"></div>
-    <div class="brand-title">Event {{ eventName }}</div>
+    <div class="brand-title">{{ eventName }}</div>
     <form class="inputs">
       <label>EVENT NAME: {{ eventName }}</label>
       <label>EVENT LOCATION: {{ eventLocation }} </label>
+      <label> TICKET PRICE: {{ eventTicketPrice }} </label>
       <label>TOTAL TICKETS: {{ eventTotalTickets }}</label>
-      <button type="submit">RELEASE TICKETS</button>
+      <button (click)="releaseTickets()">RELEASE TICKETS</button>
       <button type="submit">EVENT ANALYTICS</button>
       <button *ngIf="eventId" (click)="deleteEvent(eventId, +eventTotalTickets)">DELETE EVENT</button>
     </form>

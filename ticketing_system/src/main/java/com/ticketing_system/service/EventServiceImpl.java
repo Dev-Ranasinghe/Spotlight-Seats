@@ -17,6 +17,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class EventServiceImpl implements EventService{
 
     private final Lock lock = new ReentrantLock();
+    // Map to manage event-specific locks
+    private final ConcurrentHashMap<Integer, Lock> eventLocks = new ConcurrentHashMap<>();
 
     @Autowired
     private EventRepository eventRepository;
@@ -81,26 +83,49 @@ public class EventServiceImpl implements EventService{
     }
 
     // Activate an event and release tickets
+//    public void activateEvent(Integer eventId) {
+//        Event event = eventRepository.findById(eventId).orElse(null);
+//        if (event == null) {
+//            throw new IllegalArgumentException("Event not found");
+//        }
+//
+//        if (event.isEventStatus()) {
+//            throw new IllegalStateException("Event is already active");
+//        }
+//
+//        event.setEventStatus(true);
+//        eventRepository.save(event);
+//
+//        // Start releasing tickets to the ticket pool
+//        executorService.submit(() -> releaseTickets(event));
+//    }
+
+    // Activate an event and release tickets
     public void activateEvent(Integer eventId) {
-        Event event = eventRepository.findById(eventId).orElse(null);
-        if (event == null) {
-            throw new IllegalArgumentException("Event not found");
+        Lock lock = eventLocks.computeIfAbsent(eventId, id -> new ReentrantLock());
+        lock.lock();
+        try {
+            Event event = eventRepository.findById(eventId).orElse(null);
+            if (event == null) {
+                throw new IllegalArgumentException("Event not found");
+            }
+
+            if (event.isEventStatus()) {
+                throw new IllegalStateException("Event is already active");
+            }
+
+            event.setEventStatus(true);
+            eventRepository.save(event);
+
+            // Start releasing tickets to the ticket pool
+            executorService.submit(() -> releaseTickets(event));
+        } finally {
+            lock.unlock();
+            eventLocks.remove(eventId); // Clean up lock to prevent memory leaks
         }
-
-        if (event.isEventStatus()) {
-            throw new IllegalStateException("Event is already active");
-        }
-
-        event.setEventStatus(true);
-        eventRepository.save(event);
-
-        // Start releasing tickets to the ticket pool
-        executorService.submit(() -> releaseTickets(event));
     }
 
-
     private void releaseTickets(Event event) {
-        lock.lock();
         try {
             // Fetch existing TicketPool for the event
             TicketPool ticketPool = ticketPoolRepository.findByEvent_EventId(event.getEventId());
@@ -131,8 +156,6 @@ public class EventServiceImpl implements EventService{
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new RuntimeException("Ticket release interrupted", e);
-        } finally {
-            lock.unlock();
         }
     }
 
@@ -145,7 +168,6 @@ public class EventServiceImpl implements EventService{
         return event.getTotalTickets();
     }
 
-    //////
     public Integer getTotalTicketsByVendor(Integer vendorId) {
         List<Event> events = eventRepository.findByVendor_VendorId(vendorId);
         return events.stream()
@@ -153,7 +175,15 @@ public class EventServiceImpl implements EventService{
                 .sum();
     }
 
-    /////
+    public boolean isEventActive(Integer eventId) {
+        Event event = eventRepository.findById(eventId).orElse(null);
+        if (event == null) {
+            throw new IllegalArgumentException("Event not found with ID: " + eventId);
+        }
+        return event.isEventStatus(); // Use the `isEventStatus` field to determine if active
+    }
+
+
     public List<Event> getActiveEvents() {
         return eventRepository.findActiveEvents();
     }

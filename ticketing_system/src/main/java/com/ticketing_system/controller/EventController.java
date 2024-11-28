@@ -71,6 +71,14 @@ public class EventController {
         }
     }
 
-    /////
+    @GetMapping("/{eventId}/isActive")
+    public ResponseEntity<Boolean> isEventActive(@PathVariable Integer eventId) {
+        try {
+            boolean isActive = eventServiceImpl.isEventActive(eventId);
+            return ResponseEntity.ok(isActive);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
 
 }

@@ -29,6 +29,8 @@ public class Event {
     @Column(name = "totalTickets", nullable = false)
     private Integer totalTickets;
     @Column(name = "ticket_price", nullable = false)
+    private Integer ticketPrice;
+    @Column(name = "event_status", nullable = false)
     private boolean eventStatus;
     @ManyToOne
     @JoinColumn(name = "vendor_id", referencedColumnName = "vendor_id", nullable = false)
@@ -40,13 +42,14 @@ public class Event {
     @ToString.Exclude // Prevent circular reference in toString
     private TicketPool ticketPool;
 
-    public Event(Integer eventId, Vendor vendor, boolean eventStatus, String eventLocation, String eventName, Integer totalTickets) {
+    public Event(Integer eventId, Vendor vendor, boolean eventStatus, String eventLocation, String eventName, Integer totalTickets, Integer ticketPrice) {
         this.eventId = eventId;
         this.vendor = vendor;
         this.eventStatus = eventStatus;
         this.eventLocation = eventLocation;
         this.eventName = eventName;
         this.totalTickets = totalTickets;
+        this.ticketPrice = ticketPrice;
 //        this.ticketPrice = ticketPrice;
     }
 

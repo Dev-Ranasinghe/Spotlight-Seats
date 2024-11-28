@@ -56,6 +56,8 @@
       <input type="text" name="eventName" placeholder="enter event name here"  [(ngModel)]="event.eventName"/>
       <label>EVENT LOCATION</label>
       <input type="text" name="eventLocation" placeholder="enter event location here" [(ngModel)]="event.eventLocation"/>
+      <label>TICKET PRICE</label>
+      <input type="number" min="100" name="ticketPrice" placeholder="enter a single ticket price" [(ngModel)]="event.ticketPrice"/>
       <label>TOTAL TICKETS</label>
       <input type="number" min="100" name="totalTickets" placeholder="enter total ticket count" [(ngModel)]="event.totalTickets"/>
       <button type="submit">CREATE</button>

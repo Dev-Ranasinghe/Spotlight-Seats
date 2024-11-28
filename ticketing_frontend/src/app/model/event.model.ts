@@ -5,6 +5,7 @@ export interface Event{
     eventName: string;
     eventLocation: string;
     totalTickets: number;
+    ticketPrice: number;
     eventStatus: boolean;
     vendor: Vendor;
 }
@@ -14,5 +15,6 @@ export interface EventDTO{
     eventLocation: string;
     totalTickets: number;
     eventStatus: boolean;
+    ticketPrice: number;
     vendor: Vendor;
 }

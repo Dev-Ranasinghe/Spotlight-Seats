@@ -38,6 +38,7 @@ export class EventCreateComponent implements OnInit {
     eventName: '',
     eventLocation: '',
     totalTickets: 0,
+    ticketPrice: 0,
     eventStatus: false,
     vendor: this.vendor
   }

@@ -48,6 +48,10 @@ export class VendorDashboardComponent implements OnInit {
     this.router.navigate(['/event-create']);
   }
 
+  loginDirect(){
+    this.router.navigate(['/login'])
+  }
+
   eventManagementDirect(event: Event): void {
     this.router.navigate(['/event-management'], {
         queryParams: {
@@ -56,6 +60,7 @@ export class VendorDashboardComponent implements OnInit {
             eventLocation: event.eventLocation,
             eventTotalTickets: event.totalTickets,
             eventStatus: event.eventStatus,
+            eventTicketPrice: event.ticketPrice,
         }
     });
   }
