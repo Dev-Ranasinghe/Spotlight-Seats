@@ -85,7 +85,7 @@ import java.util.Properties;
 @Service
 public class ConfigService {
 
-    private static final String CONFIG_FILE = "/Users/dev/Desktop/Event Ticketing System/ticketing_system/src/main/resources/config.properties"; // Absolute path to your external file
+    private static final String CONFIG_FILE = "/Users/dev/Desktop/Ticketing System /ticketing_system/src/main/resources/config.properties"; // Absolute path to your external file
     Properties properties = new Properties();
 
     public ConfigService() {

@@ -57,7 +57,7 @@
       <label>TOTAL TICKETS: {{ eventTotalTickets }}</label>
       <button type="submit">RELEASE TICKETS</button>
       <button type="submit">EVENT ANALYTICS</button>
-      <button *ngIf="eventId" (click)="deleteEvent(eventId)">DELETE EVENT</button>
+      <button *ngIf="eventId" (click)="deleteEvent(eventId, +eventTotalTickets)">DELETE EVENT</button>
     </form>
     <a href="#">SpotlightSeats</a>
 </div> 

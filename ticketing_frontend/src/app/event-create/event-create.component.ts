@@ -5,6 +5,7 @@ import { LoginService } from '../service/login.service';
 import { Event, EventDTO } from '../model/event.model';
 import { ConfigService } from '../service/config.service';
 import { EventService } from '../service/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-create',
@@ -14,7 +15,7 @@ import { EventService } from '../service/event.service';
 })
 export class EventCreateComponent implements OnInit {
 
-  constructor(private vendorService: VendorService, private loginService: LoginService, private configService: ConfigService, private eventService: EventService){}
+  constructor(private vendorService: VendorService, private loginService: LoginService, private configService: ConfigService, private eventService: EventService, private router: Router){}
 
   signInData = {
     userType: '',
@@ -96,7 +97,10 @@ export class EventCreateComponent implements OnInit {
       this.event.eventLocation = '';
       this.event.eventName = '';
       this.event.totalTickets = 0;
+
+      this.vendorDashboardDirect();
       });
+
   }
 
   // Add a validation method for event details
@@ -105,5 +109,9 @@ export class EventCreateComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  vendorDashboardDirect(){
+    this.router.navigate(['/vendor-dashboard']);
   }
 }
