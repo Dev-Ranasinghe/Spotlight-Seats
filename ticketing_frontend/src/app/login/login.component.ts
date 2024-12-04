@@ -35,6 +35,9 @@ export class LoginComponent {
 constructor(private loginService: LoginService, private router: Router) { }
 
   onSignIn(){
+    // clearing the local storage before sign in 
+    localStorage.clear();
+
       let user:User = {
         username: this.signInData.username,
         password: this.signInData.password

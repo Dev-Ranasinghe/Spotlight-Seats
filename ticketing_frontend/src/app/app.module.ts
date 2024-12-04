@@ -14,6 +14,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { VendorManagementComponent } from './vendor-management/vendor-management.component';
 import { CustomerManagementComponent } from './customer-management/customer-management.component';
 import { SystemConfigComponent } from './system-config/system-config.component';
+import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { SystemConfigComponent } from './system-config/system-config.component';
     AdminDashboardComponent,
     VendorManagementComponent,
     CustomerManagementComponent,
-    SystemConfigComponent
+    SystemConfigComponent,
+    TicketPurchaseComponent,
+    PurchaseHistoryComponent
   ],
   imports: [
     BrowserModule,

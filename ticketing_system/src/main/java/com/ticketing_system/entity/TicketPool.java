@@ -23,7 +23,6 @@ public class TicketPool {
     @JoinColumn(name = "event_id", referencedColumnName = "event_id", nullable = false)
     private Event event;
 
-    /////////////
     public Integer getReleasedTicketCount() {
         return releasedTicketCount;
     }

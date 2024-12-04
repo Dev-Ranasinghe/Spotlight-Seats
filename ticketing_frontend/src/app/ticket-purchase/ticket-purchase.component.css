@@ -36,13 +36,13 @@ header{
 }
 
 .content-box{
-    height: auto;
+    height: 70vh;
     width: 100vw;
 }
 
 .container {
     position: relative;
-    margin-top: 20px;
+    margin-top: 140px;
     margin-bottom: 20px;
     width: 350px;
     height: auto;
@@ -186,7 +186,7 @@ body {
 
 .animation-example {
     position: absolute;
-    top: 55%;
+    top: 52%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     height: 80vmin;

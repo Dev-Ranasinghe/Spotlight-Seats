@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="purchase-history.component.css">
+
+<div class='animation-example'>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='item -type2'>
+        <div class='line'></div>
+        <div class='dot'></div>
+        <div class='circle'></div>
+    </div>
+    <div class='center'>
+        <div class='circle'></div>
+        <div class='circle'></div>
+        <div class='circle'></div>
+    </div>
+</div>
+
+<div class="container">
+    <ng-container *ngIf="purchases && purchases.length > 0; else noData">
+      <h2 style="color: #0078d4;">Purchase Records</h2>
+  
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Location</th>
+            <th>Ticket Count</th>
+            <th>Single Ticket Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let purchase of purchases">
+            <td>{{ purchase.event.eventName }}</td>
+            <td>{{ purchase.event.eventLocation }}</td>
+            <td>{{ purchase.purchaseCount }}</td>
+            <td>{{ purchase.event.ticketPrice | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  
+    <ng-template #noData>
+      <div class="no-data">
+        <h3>No Purchases Found</h3>
+        <p>We couldn't find any purchase records for the customer ID: <strong>{{ customerId }}</strong>.</p>
+      </div>
+    </ng-template>
+  </div>
+  

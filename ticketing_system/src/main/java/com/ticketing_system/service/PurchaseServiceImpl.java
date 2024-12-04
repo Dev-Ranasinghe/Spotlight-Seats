@@ -32,4 +32,15 @@ public class PurchaseServiceImpl implements PurchaseService{
     public void deletePurchase(Integer id) {
         purchaseRepository.deleteById(id);
     }
+
+    @Override
+    public Integer getPurchaseCountByCustomerId(Integer customerId) {
+        return purchaseRepository.getTotalPurchaseCountByCustomerId(customerId);
+    }
+
+    @Override
+    public List<Purchase> getAllPurchasesByCustomerId(Integer customerId) {
+        return purchaseRepository.findAllByCustomer_CustomerId(customerId);
+    }
+
 }

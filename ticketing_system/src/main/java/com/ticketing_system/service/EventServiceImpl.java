@@ -1,5 +1,6 @@
 package com.ticketing_system.service;
 
+import com.ticketing_system.controller.EventController;
 import com.ticketing_system.entity.Event;
 import com.ticketing_system.entity.TicketPool;
 import com.ticketing_system.entity.Vendor;
@@ -19,6 +20,10 @@ public class EventServiceImpl implements EventService{
     private final Lock lock = new ReentrantLock();
     // Map to manage event-specific locks
     private final ConcurrentHashMap<Integer, Lock> eventLocks = new ConcurrentHashMap<>();
+
+    @Autowired
+    private ConfigService configService = new ConfigService();
+
 
     @Autowired
     private EventRepository eventRepository;
@@ -83,24 +88,6 @@ public class EventServiceImpl implements EventService{
     }
 
     // Activate an event and release tickets
-//    public void activateEvent(Integer eventId) {
-//        Event event = eventRepository.findById(eventId).orElse(null);
-//        if (event == null) {
-//            throw new IllegalArgumentException("Event not found");
-//        }
-//
-//        if (event.isEventStatus()) {
-//            throw new IllegalStateException("Event is already active");
-//        }
-//
-//        event.setEventStatus(true);
-//        eventRepository.save(event);
-//
-//        // Start releasing tickets to the ticket pool
-//        executorService.submit(() -> releaseTickets(event));
-//    }
-
-    // Activate an event and release tickets
     public void activateEvent(Integer eventId) {
         Lock lock = eventLocks.computeIfAbsent(eventId, id -> new ReentrantLock());
         lock.lock();
@@ -139,8 +126,11 @@ public class EventServiceImpl implements EventService{
 
             int ticketsReleased = ticketPool.getReleasedTicketCount();
 
+            int releaseRate = Integer.parseInt(configService.getTicketReleaseRate());
+
+
             while (ticketsReleased < event.getTotalTickets()) {
-                int releaseCount = Math.min(10, event.getTotalTickets() - ticketsReleased);
+                int releaseCount = Math.min(releaseRate, event.getTotalTickets() - ticketsReleased);
 
                 // Update the released ticket count
                 ticketPool.setReleasedTicketCount(ticketsReleased + releaseCount);
@@ -182,7 +172,6 @@ public class EventServiceImpl implements EventService{
         }
         return event.isEventStatus(); // Use the `isEventStatus` field to determine if active
     }
-
 
     public List<Event> getActiveEvents() {
         return eventRepository.findActiveEvents();

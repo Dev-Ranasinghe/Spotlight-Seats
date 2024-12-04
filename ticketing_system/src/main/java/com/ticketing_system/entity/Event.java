@@ -50,10 +50,8 @@ public class Event {
         this.eventName = eventName;
         this.totalTickets = totalTickets;
         this.ticketPrice = ticketPrice;
-//        this.ticketPrice = ticketPrice;
     }
 
-    ////////////////////
     public Integer getTotalTickets() {
         return totalTickets;
     }

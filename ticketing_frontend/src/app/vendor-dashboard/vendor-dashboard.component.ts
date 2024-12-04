@@ -20,18 +20,28 @@ export class VendorDashboardComponent implements OnInit {
   vendorEmail: string = '';
   vendorId: number = 0;
 
-  events: Event[] = [];
+  events: Event[] = []; 
 
   ngOnInit(): void {
-    this.vendorService.getVendorByEmail(this.loginService.loggedInUser.username).subscribe((vendor: Vendor) => {
+    const storedVendor = localStorage.getItem('vendor');
+    if (storedVendor) {
+      const vendor = JSON.parse(storedVendor);
       this.vendorName = vendor.vendorName;
       this.vendorEmail = vendor.vendorEmail;
       this.vendorId = vendor.vendorId;
       this.loadEvents();
-      console.log(vendor);
-      });
-  }  
-
+    } else {
+      this.vendorService.getVendorByEmail(this.loginService.loggedInUser.username)
+        .subscribe((vendor: Vendor) => {
+          this.vendorName = vendor.vendorName;
+          this.vendorEmail = vendor.vendorEmail;
+          this.vendorId = vendor.vendorId;
+          localStorage.setItem('vendor', JSON.stringify(vendor)); // Save vendor data
+          this.loadEvents();
+        });
+    }
+  }
+  
   loadEvents(): void {
     this.eventService.getEventsByVendorId(this.vendorId).subscribe(
       (data: Event[]) => {

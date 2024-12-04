@@ -27,4 +27,9 @@ export class VendorService {
   deleteVendor(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrlVendor}/${id}`);
   }
+
+  getTotalTicketsByVendor(vendorId: number): Observable<number> {
+    return this.http.get<number>(`${this.apiUrlVendor}/${vendorId}/totalTickets`);
+  }
+  
 }

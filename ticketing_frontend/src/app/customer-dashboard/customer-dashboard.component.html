@@ -32,7 +32,8 @@
                     <h1 class="logo" style="width: 158px; color: white; margin-top: 12px;">SpotlightSeats</h1>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
-                    <ul class="nav">                     
+                    <ul class="nav">                 
+                      <li><a (click)=purchaseHistoryDirect();>Purchase History</a></li>    
                       <li><a href="#">Log Out</a></li>
                   </ul>   
                   <!-- ***** Menu End ***** -->
@@ -48,14 +49,14 @@
       <div class="row">
         <div class="col-lg-6 align-self-center">
           <div class="caption header-text">
-            <h6>Welcome to SpotlightSeats {{ customerName }} {{ customerEmail }}</h6>
-            <h2>{{customerName}}'s Customer Dashboard</h2>
+            <h6>Welcome to SpotlightSeats <br><br>CUSTOMER NAME:  {{ customerName }} <br>CUSTOMER EMAIL: {{ customerEmail }} <br>CUSTOMER STAT: {{ customerVip }}</h6>
+            <h2>Customer Dashboard</h2>
             <p>The Customer Dashboard is your central hub for managing your event experiences effortlessly. Browse upcoming events, view your ticket purchases, and track event updates—all in one place. Easily manage your bookings, download tickets, and explore personalized recommendations to make the most of your event-going journey.</p>
           </div>
         </div>
         <div class="col-lg-4 offset-lg-2">
           <div class="right-image">
-            <img src="/image/p.jpg" alt="">
+            <img src="/image/blue based logo for a ticketing platform logo name should be Spotlight Seats.jpg" alt="">
           </div>
         </div>
       </div>
@@ -115,7 +116,7 @@
         <div class="col-lg-6">
           <div class="section-heading">
             <h6>Events</h6>
-            <h2>Events managed by SpotlightSeats</h2> <!-- vendorName should be dynamically set in your component -->
+            <h2>Events managed by SpotlightSeats</h2>
           </div>
         </div>
         <div class="col-lg-6">
@@ -125,7 +126,7 @@
         <div *ngFor="let event of events" class="col-lg-3 col-md-6">
             <div class="item">
                 <div class="thumb">
-                  <a href="#"><img src="/image/minimalist-blue-e0q5nh2rivmv9eio.jpg" alt=""></a>
+                  <a (click)=ticketPurchaseDirect(event);><img src="/image/minimalist-blue-e0q5nh2rivmv9eio.jpg" alt=""></a>
                 </div>
                 <div class="down-content">
                 <h4>{{ event.eventName }}</h4> <!-- Display event name dynamically -->

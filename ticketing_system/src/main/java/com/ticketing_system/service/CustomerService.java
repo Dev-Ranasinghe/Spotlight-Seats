@@ -12,4 +12,5 @@ public interface CustomerService {
     public void deleteCustomer(Integer id);
     public boolean customerVerification(String username, String password);
     public Customer getCustomerByEmail(String email);
+    void updateCustomerPriorityToTrue(Integer id);
 }

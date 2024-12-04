@@ -48,12 +48,19 @@ export class EventManagementComponent implements OnInit{
             return;
           }
 
-          // Calculate the updated total tickets
           const updatedTotalTickets = totalTickets - eventTotalTickets;
 
           // Update the system parameter with the new total
-          this.configService.updateSystemParameter("totalTickets", updatedTotalTickets.toString());
-          console.log("Updated Total Tickets:", updatedTotalTickets);
+          this.configService.updateSystemParameter("totalTickets", updatedTotalTickets.toString())
+            .subscribe({
+              next: () => {
+                console.log("Updated Total Tickets:", updatedTotalTickets);
+              },
+              error: (err) => {
+                console.error("Error updating total tickets:", err);
+              }
+            });
+          
         }
       })
       this.eventService.deleteEvent(eventId).subscribe(

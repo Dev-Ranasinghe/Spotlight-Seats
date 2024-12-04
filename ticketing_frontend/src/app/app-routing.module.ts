@@ -9,6 +9,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { VendorManagementComponent } from './vendor-management/vendor-management.component';
 import { CustomerManagementComponent } from './customer-management/customer-management.component';
 import { SystemConfigComponent } from './system-config/system-config.component';
+import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login by default
                         { path: 'login', component: LoginComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }, /
                         { path: 'vendor-management', component: VendorManagementComponent},
                         { path: 'customer-management', component:CustomerManagementComponent},
                         { path: 'system-config', component:SystemConfigComponent},
+                        { path: 'ticket-purchase', component:TicketPurchaseComponent},
+                        { path: 'purchase-history', component:PurchaseHistoryComponent},
                         { path: 'customer-dashboard', component: CustomerDashboardComponent}];
 
 @NgModule({

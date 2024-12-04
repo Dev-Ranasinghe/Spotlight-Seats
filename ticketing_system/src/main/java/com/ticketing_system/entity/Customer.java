@@ -1,10 +1,14 @@
 package com.ticketing_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.http.HttpStatusCode;
+
+import java.util.List;
 
 @Data //getters and setters auto generated
 @AllArgsConstructor //generate constructor with all the attributes
@@ -26,9 +30,17 @@ public class Customer {
     private boolean customerPriority;
     @Column(name = "customer_password", nullable = false)
     private String customerPassword;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @ToString.Exclude // Prevent circular reference in toString
+    private List<Purchase> purchases;
 
     public String getCustomerPassword() {
         return customerPassword;
+    }
+
+    public void setCustomerPriority(boolean customerPriority) {
+        this.customerPriority = customerPriority;
     }
 
     public Integer getCustomerId() {

@@ -305,8 +305,9 @@ public class CliMain {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Displaying active events...");
+                    System.out.println("Displaying active events...\n");
                     eventController.getActiveEvents();
+
                     break;
                 case 2:
                     System.out.println("Displaying customer purchase history...");

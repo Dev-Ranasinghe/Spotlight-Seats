@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="system-config.component.css">
+<link rel="stylesheet" href="ticket-purchase.component.css">
 
 <header>
   
@@ -55,51 +55,33 @@
       
       <div class="container">
           <div class="brand-logo"></div>
-          <div class="brand-title">System Configuration</div>
+          <div class="brand-title">{{eventName}}</div>
           <form class="inputs">
-            <label>TOTAL TICKETS: {{totalTickets}}</label>
+            <label>AVAILABLE TICKETS: {{releasedTicketCount}}</label>
+            <label>SINGLE TICKET PRICE: {{eventTicketPrice}}</label>
           </form> 
 
-          <form class="inputs" (submit)="updateMaxTicketCapacity()">
-            <label>MAX TICKET CAPACITY</label>
+          <form class="inputs" (ngSubmit)="purchaseTickets()">
+            <label>TICKET COUNT</label>
             <input
               type="number"
-              [(ngModel)]="maxTicketCapacity"
-              name="maxTicketCapacity"
-              placeholder="Enter max ticket capacity"
+              name="ticketCount"
+              [(ngModel)]="ticketCount"
+              placeholder="Enter ticket count"
+              required
+              max="10"
             />
-            <button type="submit">UPDATE</button>
-          </form>
-          
-          <form class="inputs" (submit)="updateTicketReleaseRate()">
-            <label>TICKET RELEASE RATE</label>
-            <input
-              type="number"
-              [(ngModel)]="ticketReleaseRate"
-              name="ticketReleaseRate"
-              placeholder="Enter Ticket Release Rate"
-            />
-            <button type="submit">UPDATE</button>
-          </form>
-          
-          <form class="inputs" (submit)="updateCustomerRetrievalRate()">
-            <label>CUSTOMER RETRIEAVAL RATE</label>
-            <input
-              type="number"
-              [(ngModel)]="customerRetrievalRate"
-              name="customerRetrievalRate"
-              placeholder="Enter customer retrieval rate"
-            />
-            <button type="submit">UPDATE</button>
+            <button type="submit">PURCHASE TICKETS</button>
           </form>
           
                   
           <a href="#">SpotlightSeats</a>
       </div> 
+        
 </div>
 
 <footer>
-    <div >
+    <div>
       <div class="col-lg-12">
         <p>Copyright © SpotlightSeats. All rights reserved.</p>
       </div>

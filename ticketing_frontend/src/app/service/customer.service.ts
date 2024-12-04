@@ -26,4 +26,10 @@ export class CustomerService {
   deleteCustomer(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrlCustomer}/${id}`);
   }
+
+  // Method to update customer priority to true
+  updateCustomerPriorityToTrue(id: number): Observable<void> {
+    const url = `${this.apiUrlCustomer}/${id}/priority`;
+    return this.http.put<void>(url, null); 
+  }
 }

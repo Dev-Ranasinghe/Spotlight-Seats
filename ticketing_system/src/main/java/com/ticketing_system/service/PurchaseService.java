@@ -9,4 +9,6 @@ public interface PurchaseService {
     public Purchase getPurchaseById(Integer id);
     public Purchase savePurchase(Purchase purchase);
     public void deletePurchase(Integer id);
+    Integer getPurchaseCountByCustomerId(Integer customerId);
+    List<Purchase> getAllPurchasesByCustomerId(Integer customerId);
 }

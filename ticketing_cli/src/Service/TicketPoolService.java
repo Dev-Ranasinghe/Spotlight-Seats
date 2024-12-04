@@ -41,9 +41,38 @@ public class TicketPoolService implements Runnable {
                         deleteTicketPool(eventId);
                     }
                     break;
+                case "fetchReleasedTicketCount":
+                    if(eventId != null){
+                        fetchReleasedTicketCountByEventId(eventId);
+                    }
                 default:
                     System.out.println("Invalid task specified.");
             }
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public String fetchReleasedTicketCountByEventId(int eventId) {
+        lock.lock();
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:8080/api/ticket-pool/event/" + eventId + "/released-tickets"))
+                    .GET()
+                    .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            String releasedTickets = response.body().trim();
+
+            if (releasedTickets.isEmpty()) {
+                System.out.println("API response is empty for Event ID: " + eventId);
+                return null; // Return null if the response is empty
+            }
+
+            System.out.println("Total Tickets API Response: " + releasedTickets);
+            return releasedTickets;
+        } catch (Exception e) {
+            return null; // Return null if an exception occurs
         } finally {
             lock.unlock();
         }

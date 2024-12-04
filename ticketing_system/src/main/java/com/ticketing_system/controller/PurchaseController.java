@@ -31,4 +31,14 @@ public class PurchaseController {
         return purchaseServiceImpl.savePurchase(purchase);
     }
 
+    @GetMapping("/customer/{customerId}/count")
+    public Integer getPurchaseCountByCustomerId(@PathVariable Integer customerId) {
+        return purchaseServiceImpl.getPurchaseCountByCustomerId(customerId);
+    }
+
+    @GetMapping("/customer/{customerId}")
+    public List<Purchase> getAllPurchasesByCustomerId(@PathVariable Integer customerId) {
+        return purchaseServiceImpl.getAllPurchasesByCustomerId(customerId);
+    }
+
 }

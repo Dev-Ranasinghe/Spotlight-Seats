@@ -1,6 +1,7 @@
 package Controller;
 
 import Service.CustomerService;
+import Service.TicketPoolService;
 import Service.VendorService;
 
 import java.net.URI;
@@ -13,6 +14,7 @@ public class CustomerController {
 
     private final HttpClient client = HttpClient.newHttpClient();
     private final MenuController menuController = new MenuController();
+    private final TicketPoolController ticketPoolController = new TicketPoolController();
     private String username;
     private String id;
 
@@ -61,7 +63,7 @@ public class CustomerController {
         String contact = menuController.getValidInput("Enter Customer Contact (e.g., phone number): ", "number");
         String email = menuController.getValidInput("Enter Customer Email: ", "email");
         String password = menuController.notNullChecker("Enter Customer Password: ", "customer password");
-        boolean customerPriority = false;
+        boolean customerPriority = true;
 
         // Create JSON string from user inputs
         String customerJson = String.format(

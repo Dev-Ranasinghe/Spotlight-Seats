@@ -46,6 +46,11 @@ public class CustomerController {
         return customerServiceImpl.saveCustomer(customer);
     }
 
+    @PutMapping("/{id}/priority")
+    public void updateCustomerPriorityToTrue(@PathVariable Integer id) {
+        customerServiceImpl.updateCustomerPriorityToTrue(id);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable Integer id) {
         CustomerServiceImpl.CustomerThread deleteThread = customerServiceImpl.new CustomerThread("delete", id, null);
