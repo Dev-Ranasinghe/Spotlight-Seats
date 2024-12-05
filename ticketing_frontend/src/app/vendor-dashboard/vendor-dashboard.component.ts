@@ -29,6 +29,7 @@ export class VendorDashboardComponent implements OnInit {
       this.vendorName = vendor.vendorName;
       this.vendorEmail = vendor.vendorEmail;
       this.vendorId = vendor.vendorId;
+      console.log("vendor email:", this.vendorEmail);
       this.loadEvents();
     } else {
       this.vendorService.getVendorByEmail(this.loginService.loggedInUser.username)
@@ -37,10 +38,45 @@ export class VendorDashboardComponent implements OnInit {
           this.vendorEmail = vendor.vendorEmail;
           this.vendorId = vendor.vendorId;
           localStorage.setItem('vendor', JSON.stringify(vendor)); // Save vendor data
+          console.log("vendor email:", this.vendorEmail);
           this.loadEvents();
         });
     }
   }
+
+  // ngOnInit(): void {
+  //   // Check if vendor data is passed through router state
+  //   const navigation = this.router.getCurrentNavigation();
+  //   const state = navigation?.extras.state as { vendor: Vendor };
+  
+  //   if (state?.vendor) {
+  //     const vendor = state.vendor;
+  //     this.vendorName = vendor.vendorName;
+  //     this.vendorEmail = vendor.vendorEmail;
+  //     this.vendorId = vendor.vendorId;
+  //     localStorage.setItem('vendor', JSON.stringify(vendor)); // Save vendor data in localStorage
+  //     this.loadEvents();
+  //   } else {
+  //     const storedVendor = localStorage.getItem('vendor');
+  //     if (storedVendor) {
+  //       const vendor = JSON.parse(storedVendor);
+  //       this.vendorName = vendor.vendorName;
+  //       this.vendorEmail = vendor.vendorEmail;
+  //       this.vendorId = vendor.vendorId;
+  //       this.loadEvents();
+  //     } else {
+  //       this.vendorService.getVendorByEmail(this.loginService.loggedInUser.username)
+  //         .subscribe((vendor: Vendor) => {
+  //           this.vendorName = vendor.vendorName;
+  //           this.vendorEmail = vendor.vendorEmail;
+  //           this.vendorId = vendor.vendorId;
+  //           localStorage.setItem('vendor', JSON.stringify(vendor)); // Save vendor data
+  //           this.loadEvents();
+  //         });
+  //     }
+  //   }
+  // }
+  
   
   loadEvents(): void {
     this.eventService.getEventsByVendorId(this.vendorId).subscribe(

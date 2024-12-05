@@ -44,6 +44,7 @@ export class EventCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('Logged-in username:', this.loginService.loggedInUser.username);
     this.vendorService.getVendorByEmail(this.loginService.loggedInUser.username).subscribe((vendor: Vendor) => {
       this.vendor = vendor;
       this.event.vendor = vendor;
@@ -57,50 +58,6 @@ export class EventCreateComponent implements OnInit {
   validateSeatCapacity():boolean {
     return this.event.totalTickets <= this.availableTickets;
   }
-
-  // onSubmit(){
-
-  //    // Validate the event details
-  //   if (!this.validateEventDetails()) {
-  //     return;
-  //   }
-
-  //   if(!this.validateSeatCapacity()){
-  //     alert("Event capacity exceeded !!!");
-  //     this.event.totalTickets = 0;
-  //     return;
-  //   }
-
-  //   this.configService.getTotalTickets().subscribe({
-  //     next: (tickets: string) => {
-  //       this.systemTotalTickets = parseInt(tickets, 10) || 0;
-  //       console.log('Total Tickets:', tickets);
-  //     },
-  //     error: (err) => {
-  //       console.error('Error fetching total tickets:', err);
-  //     }
-  //   });
-
-  //   console.log(this.event.vendor);
-  //   this.eventService.createEvent(this.event).subscribe((data: Event) => {
-  //     console.log(data);
-  //     alert("Event successfully created :)")
-
-  //     // Parse the total tickets from the system as a number
-  //     const updatedTotalTickets = this.systemTotalTickets + this.event.totalTickets;
-
-  //     // Update the system parameter with the new total
-  //     this.configService.updateSystemParameter("totalTickets", updatedTotalTickets.toString());
-  //     console.log("Updated Total Tickets:", updatedTotalTickets);
-
-  //     this.event.eventLocation = '';
-  //     this.event.eventName = '';
-  //     this.event.totalTickets = 0;
-
-  //     this.vendorDashboardDirect();
-  //     });
-
-  // }
 
   onSubmit() {
     // Validate the event details

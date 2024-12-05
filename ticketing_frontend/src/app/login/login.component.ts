@@ -66,35 +66,115 @@ constructor(private loginService: LoginService, private router: Router) { }
     }
   }
 
-  onSignUp(){
-    if(this.signUpData.userType === "Customer"){
-      let customer:Customer = {
+  // onSignUp() {
+  //   if (this.signUpData.userType === "Customer") {
+  //     let customer: Customer = {
+  //       customerName: this.signUpData.name,
+  //       customerContact: this.signUpData.contact,
+  //       customerPriority: false,
+  //       customerPassword: this.signUpData.password,
+  //       customerEmail: this.signUpData.username,
+  //       customerId: -1
+  //     };
+  //     this.loginService.signUpCustomer(customer).subscribe((data: Customer) => {
+  //       console.log('Customer signed up:', data);
+  //       alert('Sign-up successful! Redirecting to the customer dashboard...');
+  //       this.router.navigate(['/customer-dashboard']); // Redirect to customer dashboard
+  //     });
+  //   } else {
+  //     let vendor: Vendor = {
+  //       vendorName: this.signUpData.name,
+  //       vendorContact: this.signUpData.contact,
+  //       vendorPassword: this.signUpData.password,
+  //       vendorEmail: this.signUpData.username,
+  //       vendorId: -1
+  //     };
+  //     this.loginService.signUpVendor(vendor).subscribe((data: Vendor) => {
+  //       console.log('Vendor signed up:', data);
+  //       alert('Sign-up successful! Redirecting to the vendor dashboard...');
+  //       localStorage.setItem('vendor', JSON.stringify(data)); // Save vendor details in localStorage
+  //       this.router.navigate(['/vendor-dashboard']); // Redirect to vendor dashboard
+  //     });
+  //   }
+  // }
+  
+  onSignUp() {
+    if (this.signUpData.userType === "Customer") {
+      let customer: Customer = {
         customerName: this.signUpData.name,
         customerContact: this.signUpData.contact,
         customerPriority: false,
         customerPassword: this.signUpData.password,
         customerEmail: this.signUpData.username,
         customerId: -1
-      }
+      };
       this.loginService.signUpCustomer(customer).subscribe((data: Customer) => {
-        console.log(data);
-
-        });
-    } 
-    else{
-      let vendor:Vendor = {
+        console.log('Customer signed up:', data);
+        alert('Sign-up successful! Redirecting to the customer dashboard...');
+        this.loginService.loggedInUser = { 
+          username: this.signUpData.username, 
+          password: this.signUpData.password 
+        }; // Update the logged-in user
+        this.router.navigate(['/customer-dashboard']); // Redirect to customer dashboard
+      });
+    } else {
+      let vendor: Vendor = {
         vendorName: this.signUpData.name,
         vendorContact: this.signUpData.contact,
         vendorPassword: this.signUpData.password,
         vendorEmail: this.signUpData.username,
         vendorId: -1
-      }
+      };
       this.loginService.signUpVendor(vendor).subscribe((data: Vendor) => {
-        console.log(data);
-
-        });
-    }   
+        console.log('Vendor signed up:', data);
+        alert('Sign-up successful! Redirecting to the vendor dashboard...');
+        this.loginService.loggedInUser = { 
+          username: this.signUpData.username, 
+          password: this.signUpData.password 
+        }; // Update the logged-in user
+        localStorage.setItem('vendor', JSON.stringify(data)); // Save vendor details in localStorage
+        this.router.navigate(['/vendor-dashboard'], {
+          state: { vendor: data } // Pass vendor data through router state
+        }); // Redirect to vendor dashboard
+      });
+    }
   }
+  
+
+  // onSignUp() {
+  //   if (this.signUpData.userType === "Customer") {
+  //     let customer: Customer = {
+  //       customerName: this.signUpData.name,
+  //       customerContact: this.signUpData.contact,
+  //       customerPriority: false,
+  //       customerPassword: this.signUpData.password,
+  //       customerEmail: this.signUpData.username,
+  //       customerId: -1
+  //     };
+  //     this.loginService.signUpCustomer(customer).subscribe((data: Customer) => {
+  //       console.log('Customer signed up:', data);
+  //       alert('Sign-up successful! Redirecting to the customer dashboard...');
+  //       this.router.navigate(['/customer-dashboard']); // Redirect to customer dashboard
+  //     });
+  //   } else {
+  //     let vendor: Vendor = {
+  //       vendorName: this.signUpData.name,
+  //       vendorContact: this.signUpData.contact,
+  //       vendorPassword: this.signUpData.password,
+  //       vendorEmail: this.signUpData.username,
+  //       vendorId: -1
+  //     };
+  //     this.loginService.signUpVendor(vendor).subscribe((data: Vendor) => {
+  //       console.log('Vendor signed up:', data);
+  //       alert('Sign-up successful! Redirecting to the vendor dashboard...');
+  //       localStorage.setItem('vendor', JSON.stringify(data)); // Save vendor details in localStorage
+  //       this.router.navigate(['/vendor-dashboard'], {
+  //         state: { vendor: data } // Pass vendor data through router state
+  //       }); // Redirect to vendor dashboard
+  //     });
+  //   }
+  // }
+  
 
   vendorDashboardDirect(){
     this.router.navigate(['/vendor-dashboard']);
@@ -103,4 +183,20 @@ constructor(private loginService: LoginService, private router: Router) { }
   customerDashboardDirect(){
     this.router.navigate(['/customer-dashboard'])
   }
+
+
+  confirmAndSignUp(form: NgForm): void {
+    if (confirm('Are you sure you want to sign up with the provided details?')) {
+      if (form.valid) {
+        this.onSignUp();
+      } else {
+        alert('Please fill in all required fields.');
+      }
+    } else {
+      alert('Sign-up cancelled.');
+    }
+  }
+  
 }
+
+

@@ -41,8 +41,8 @@ public class CustomerController {
 
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
-        CustomerServiceImpl.CustomerThread saveThread = customerServiceImpl.new CustomerThread("save", null, customer);
-        saveThread.start();
+//        CustomerServiceImpl.CustomerThread saveThread = customerServiceImpl.new CustomerThread("save", null, customer);
+//        saveThread.start();
         return customerServiceImpl.saveCustomer(customer);
     }
 

@@ -46,7 +46,7 @@
                   <label for="vendor-radio">Vendor</label>
                 </div>
               </div>
-                <form #signUpForm="ngForm" (ngSubmit)="onSignUp()">
+                <form #signUpForm="ngForm" (ngSubmit)="confirmAndSignUp(signUpForm)">
 
                     <div class="group">
                         <label for="signup-user" class="label">Name</label>
