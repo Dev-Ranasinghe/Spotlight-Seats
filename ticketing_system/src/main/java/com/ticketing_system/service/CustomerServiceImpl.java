@@ -1,7 +1,6 @@
 package com.ticketing_system.service;
 
 import com.ticketing_system.entity.Customer;
-import com.ticketing_system.entity.Vendor;
 import com.ticketing_system.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
@@ -112,5 +111,9 @@ public class CustomerServiceImpl implements CustomerService{
         );
         customer.setCustomerPriority(true);
         customerRepository.save(customer);
+    }
+
+    public List<String> getAllCustomerEmails() {
+        return customerRepository.findAllCustomerEmails();
     }
 }

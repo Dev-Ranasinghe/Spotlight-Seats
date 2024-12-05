@@ -20,7 +20,7 @@
                   <label for="vendor-radio">Vendor</label>
                 </div>
               </div>
-                <form #signInForm="ngForm" (ngSubmit)="onSignIn()">
+                <form #signInForm="ngForm" (ngSubmit)="onSignIn(signInForm)">
                     <div class="group">
                         <label for="signin-user" class="label">Username</label>
                         <input name="username" id="signin-user" type="text" [(ngModel)]="signInData.username" class="input" required>
@@ -59,10 +59,6 @@
                     <div class="group">
                         <label for="signup-pass" class="label">Password</label>
                         <input name="sign-up-password" id="signup-pass" [(ngModel)]="signUpData.password" type="password" class="input" required>
-                    </div>
-                    <div class="group">
-                        <label for="repeat-pass" class="label">Repeat Password</label>
-                        <input name="sign-up-repeat-password" id="repeat-pass" type="password" [(ngModel)]="signUpData.repeatPassword" class="input" required>
                     </div>
                     <div class="group">
                         <label for="signup-email" class="label">Email Address</label>

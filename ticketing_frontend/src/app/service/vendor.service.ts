@@ -28,8 +28,14 @@ export class VendorService {
     return this.http.delete<void>(`${this.apiUrlVendor}/${id}`);
   }
 
+  // method to get total tickets for each vendor
   getTotalTicketsByVendor(vendorId: number): Observable<number> {
     return this.http.get<number>(`${this.apiUrlVendor}/${vendorId}/totalTickets`);
+  }
+
+  // method to get all the vendor emails
+  getAllVendorEmails(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrlVendor}/emails`);
   }
   
 }

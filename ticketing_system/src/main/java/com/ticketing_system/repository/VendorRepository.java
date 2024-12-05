@@ -8,13 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface VendorRepository extends JpaRepository <Vendor, Integer> {
 
     Vendor findByVendorEmail(String email);
 
-//    @Query("SELECT v.vendorId FROM Vendor v WHERE v.vendorEmail = :email")
-//    Integer findVendorIdByVendorEmail(@Param("email") String email);
-//    Vendor findVendorIdByVendorEmail(String email);
+    @Query("SELECT v.vendorEmail FROM Vendor v")
+    List<String> findAllVendorEmails();
 
 }

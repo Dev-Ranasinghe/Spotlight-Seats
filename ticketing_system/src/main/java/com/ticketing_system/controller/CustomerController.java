@@ -1,7 +1,6 @@
 package com.ticketing_system.controller;
 
 import com.ticketing_system.entity.Customer;
-import com.ticketing_system.entity.Vendor;
 import com.ticketing_system.service.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +40,6 @@ public class CustomerController {
 
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
-//        CustomerServiceImpl.CustomerThread saveThread = customerServiceImpl.new CustomerThread("save", null, customer);
-//        saveThread.start();
         return customerServiceImpl.saveCustomer(customer);
     }
 
@@ -61,5 +58,10 @@ public class CustomerController {
     @GetMapping("/login")
     public boolean customerVerification(@RequestParam String username, @RequestParam String password) {
         return customerServiceImpl.customerVerification(username, password);
+    }
+
+    @GetMapping("/emails")
+    public List<String> getAllCustomerEmails() {
+        return customerServiceImpl.getAllCustomerEmails();
     }
 }

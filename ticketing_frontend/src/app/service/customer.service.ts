@@ -32,4 +32,9 @@ export class CustomerService {
     const url = `${this.apiUrlCustomer}/${id}/priority`;
     return this.http.put<void>(url, null); 
   }
+
+  // method to get all the customers
+  getAllCustomerEmails(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrlCustomer}/emails`);
+  }
 }

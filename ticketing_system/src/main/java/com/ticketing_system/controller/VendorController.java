@@ -81,4 +81,9 @@ public class VendorController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    @GetMapping("/emails")
+    public List<String> getAllVendorEmails() {
+        return vendorServiceImpl.getAllVendorEmails();
+    }
 }

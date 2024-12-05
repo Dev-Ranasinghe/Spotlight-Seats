@@ -102,4 +102,8 @@ public class VendorServiceImpl implements VendorService{
             }
         }
     }
+
+    public List<String> getAllVendorEmails() {
+        return vendorRepository.findAllVendorEmails();
+    }
 }
