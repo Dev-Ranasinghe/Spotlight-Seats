@@ -30,8 +30,9 @@ public class Customer {
     private boolean customerPriority;
     @Column(name = "customer_password", nullable = false)
     private String customerPassword;
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference("customer-purchase")
     @ToString.Exclude // Prevent circular reference in toString
     private List<Purchase> purchases;
 

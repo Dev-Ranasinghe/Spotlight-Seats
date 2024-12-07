@@ -17,13 +17,17 @@ public class Purchase {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "purchase_id")
     private Integer purchaseId;
+
     @ManyToOne
+    @JsonBackReference("event-purchase")
     @JoinColumn(name = "event_id", referencedColumnName = "event_id", nullable = false)
     private Event event;
+
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference("customer-purchase")
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
     private Customer customer;
+
     @Column(name = "purchase_count", nullable = false)
     private Integer purchaseCount;
 

@@ -92,48 +92,6 @@ constructor(private loginService: LoginService, private router: Router, private 
       }
     }
   }
-  
-  
-  // onSignUp() {
-    // if (this.signUpData.userType === "Customer") {
-    //   let customer: Customer = {
-    //     customerName: this.signUpData.name,
-    //     customerContact: this.signUpData.contact,
-    //     customerPriority: false,
-    //     customerPassword: this.signUpData.password,
-    //     customerEmail: this.signUpData.username,
-    //     customerId: -1
-    //   };
-    //   this.loginService.signUpCustomer(customer).subscribe((data: Customer) => {
-    //     console.log('Customer signed up:', data);
-    //     alert('Sign-up successful! Redirecting to the customer dashboard...');
-    //     this.loginService.loggedInUser = { 
-    //       username: this.signUpData.username, 
-    //       password: this.signUpData.password 
-    //     }; // Update the logged-in user
-    //     this.router.navigate(['/customer-dashboard']); // Redirect to customer dashboard
-    //   });
-    // } else {
-    //   let vendor: Vendor = {
-    //     vendorName: this.signUpData.name,
-    //     vendorContact: this.signUpData.contact,
-    //     vendorPassword: this.signUpData.password,
-    //     vendorEmail: this.signUpData.username,
-    //     vendorId: -1
-    //   };
-    //   this.loginService.signUpVendor(vendor).subscribe((data: Vendor) => {
-    //     console.log('Vendor signed up:', data);
-    //     alert('Sign-up successful! Redirecting to the vendor dashboard...');
-    //     this.loginService.loggedInUser = { 
-    //       username: this.signUpData.username, 
-    //       password: this.signUpData.password 
-    //     }; // Update the logged-in user
-    //     localStorage.setItem('vendor', JSON.stringify(data)); // Save vendor details in localStorage
-    //     this.router.navigate(['/vendor-dashboard'], {
-    //       state: { vendor: data } // Pass vendor data through router state
-    //     }); // Redirect to vendor dashboard
-    //   });
-    // }
 
     onSignUp() {
       // First, check if the email is already taken
@@ -144,6 +102,7 @@ constructor(private loginService: LoginService, private router: Router, private 
           if (allEmails.includes(this.signUpData.username)) {
             alert('This email is already registered. Please use a different email.');
           } else {
+            console.log(customerEmails, vendorEmails);
             // Proceed with sign-up
             if (this.signUpData.userType === "Customer") {
               let customer: Customer = {

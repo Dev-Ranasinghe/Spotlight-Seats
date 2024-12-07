@@ -4,26 +4,26 @@ input {
   caret-color: red;
 }
 
-/* body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #ecf0f3;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    place-items: center;
-    overflow: hidden;
-    font-family: poppins;
-} */
+.logo {
+    color: white;
+    font-size: 35px;
+    font-weight: 400;
+    margin-left: 8vw;
+    margin-top: 8px;
+    font-family: 'Poppins';
+    font-size: 36px;
+  }
+
+.home-icon{
+    margin-left: 80px; 
+    margin-top: 15px; 
+    font-size: 30px; 
+    color: white;
+}
 
 html,body {
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 header{
@@ -44,7 +44,7 @@ header{
     position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 350px;
+    width: 360px;
     height: auto;
     border-radius: 20px;
     padding: 40px;
@@ -118,18 +118,6 @@ button {
 
 button:hover {
   box-shadow: none;
-}
-
-a {
-  position: absolute;
-  font-size: 8px;
-  bottom: 4px;
-  right: 4px;
-  text-decoration: none;
-  color: black;
-  background: rgb(136, 207, 233);
-  border-radius: 10px;
-  padding: 2px;
 }
 
 h1 {

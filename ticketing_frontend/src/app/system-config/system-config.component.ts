@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ConfigService } from '../service/config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-system-config',
@@ -13,7 +14,7 @@ export class SystemConfigComponent implements OnInit {
   customerRetrievalRate: string = '';
   totalTickets: string = '';
 
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadConfigData();
@@ -54,37 +55,41 @@ export class SystemConfigComponent implements OnInit {
             alert('Failed to update Max Ticket Capacity.');
           }
         );
-    } 
-
-    updateTicketReleaseRate(): void {
-      console.log('Updated Ticket Release Rate:', this.ticketReleaseRate);
-        this.configService
-          .updateSystemParameter('ticketReleaseRate', this.ticketReleaseRate)
-          .subscribe(
-            (response) => {
-              console.log('Backend response:', response);
-              alert('Ticket Release Rate updated successfully');
-            },
-            (error) => {
-              console.error('Error updating parameter:', error);
-              alert('Failed to update Ticket Release Rate.');
-            }
-          );
       } 
 
-      updateCustomerRetrievalRate(): void {
-        console.log('Updated Customer Retrieval Rate:', this.customerRetrievalRate); 
-          this.configService
-            .updateSystemParameter('customerRetrievalRate', this.customerRetrievalRate)
-            .subscribe(
-              (response) => {
-                console.log('Backend response:', response);
-                alert('Customer Retrieval Rate updated successfully');
-              },
-              (error) => {
-                console.error('Error updating parameter:', error);
-                alert('Failed to update Customer Retrieval Rate.');
-              }
-            );
-        } 
+  updateTicketReleaseRate(): void {
+    console.log('Updated Ticket Release Rate:', this.ticketReleaseRate);
+      this.configService
+        .updateSystemParameter('ticketReleaseRate', this.ticketReleaseRate)
+        .subscribe(
+          (response) => {
+            console.log('Backend response:', response);
+            alert('Ticket Release Rate updated successfully');
+          },
+          (error) => {
+            console.error('Error updating parameter:', error);
+            alert('Failed to update Ticket Release Rate.');
+          }
+        );
+      } 
+
+  updateCustomerRetrievalRate(): void {
+    console.log('Updated Customer Retrieval Rate:', this.customerRetrievalRate); 
+      this.configService
+        .updateSystemParameter('customerRetrievalRate', this.customerRetrievalRate)
+        .subscribe(
+          (response) => {
+            console.log('Backend response:', response);
+            alert('Customer Retrieval Rate updated successfully');
+          },
+          (error) => {
+            console.error('Error updating parameter:', error);
+            alert('Failed to update Customer Retrieval Rate.');
+          }
+        );
+      } 
+
+  adminDashboardDirect(){
+    this.router.navigate(['/admin-dashboard'])
+  }
 }

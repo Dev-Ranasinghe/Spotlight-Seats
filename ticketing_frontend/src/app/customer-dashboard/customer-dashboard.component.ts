@@ -124,4 +124,8 @@ export class CustomerDashboardComponent implements OnInit {
       }
     );
   }
+
+  loginDirect(){
+    this.router.navigate(['/login'])
+  }
 }

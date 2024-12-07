@@ -32,15 +32,22 @@ public class Event {
     private Integer ticketPrice;
     @Column(name = "event_status", nullable = false)
     private boolean eventStatus;
+
     @ManyToOne
     @JoinColumn(name = "vendor_id", referencedColumnName = "vendor_id", nullable = false)
     @JsonBackReference
     @ToString.Exclude // Prevent circular reference in toString
     private Vendor vendor;
+
     @OneToOne(mappedBy = "event", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonManagedReference
     @ToString.Exclude // Prevent circular reference in toString
     private TicketPool ticketPool;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonManagedReference("event-purchase")
+    @ToString.Exclude
+    private List<Purchase> purchases;
 
     public Event(Integer eventId, Vendor vendor, boolean eventStatus, String eventLocation, String eventName, Integer totalTickets, Integer ticketPrice) {
         this.eventId = eventId;

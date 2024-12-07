@@ -75,4 +75,8 @@ export class AdminDashboardComponent implements OnInit{
   systemConfigDirect(){
     this.router.navigate(['/system-config']);
   }
+
+  loginDirect(){
+    this.router.navigate(['/login'])
+  }
 }

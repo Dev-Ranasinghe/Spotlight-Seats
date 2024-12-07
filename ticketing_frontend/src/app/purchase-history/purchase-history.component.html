@@ -1,4 +1,13 @@
 <link rel="stylesheet" href="purchase-history.component.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<header>
+  <div class="navbar">
+    <a class="home-icon" ><i class="fa-solid fa-house"></i></a>
+  </div>
+</header>  
+
+<div class="content-box">
 
 <div class='animation-example'>
     <div class='item'>
@@ -75,8 +84,16 @@
     <ng-template #noData>
       <div class="no-data">
         <h3>No Purchases Found</h3>
-        <p>We couldn't find any purchase records for the customer ID: <strong>{{ customerId }}</strong>.</p>
+        <p>Couldn't find any purchase records for the customer.</p>
       </div>
     </ng-template>
   </div>
-  
+</div>
+
+<footer>
+    <div >
+      <div class="col-lg-12">
+        <p>Copyright © SpotlightSeats. All rights reserved.</p>
+      </div>
+    </div>
+</footer>
