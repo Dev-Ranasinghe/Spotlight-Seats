@@ -1,5 +1,6 @@
 package com.ticketing_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -46,5 +47,26 @@ public class Customer {
 
     public Integer getCustomerId() {
         return customerId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getCustomerContact() {
+        return customerContact;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public Customer(Integer customerId, String customerName, String customerContact, String customerEmail, boolean customerPriority, String customerPassword) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerContact = customerContact;
+        this.customerEmail = customerEmail;
+        this.customerPriority = customerPriority;
+        this.customerPassword = customerPassword;
     }
 }

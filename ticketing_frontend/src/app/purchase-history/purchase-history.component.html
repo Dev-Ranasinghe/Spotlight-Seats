@@ -72,10 +72,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let purchase of purchases">
-            <td>{{ purchase.event.eventName }}</td>
-            <td>{{ purchase.event.eventLocation }}</td>
+            <td>{{ purchase.eventName }}</td>
+            <td>{{ purchase.eventLocation }}</td>
             <td>{{ purchase.purchaseCount }}</td>
-            <td>{{ purchase.event.ticketPrice | currency }}</td>
+            <td>{{ purchase.ticketPrice | currency }}</td>
           </tr>
         </tbody>
       </table>

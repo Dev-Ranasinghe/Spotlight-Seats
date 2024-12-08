@@ -43,18 +43,6 @@ export class EventCreateComponent implements OnInit {
     vendor: this.vendor
   }
 
-  // ngOnInit(): void {
-  //   console.log('Logged-in username:', this.loginService.loggedInUser.username);
-  //   this.vendorService.getVendorByEmail(this.loginService.loggedInUser.username).subscribe((vendor: Vendor) => {
-  //     this.vendor = vendor;
-  //     this.event.vendor = vendor;
-  //     });
-
-  //     this.configService.getAvailableTickets().subscribe((availableTickets: number) => {
-  //       this.availableTickets = availableTickets;
-  //     });
-  // }
-
   ngOnInit(): void {
     const storedVendor = localStorage.getItem('vendor');
     if (storedVendor) {
@@ -66,7 +54,7 @@ export class EventCreateComponent implements OnInit {
       this.configService.getAvailableTickets().subscribe((availableTickets: number) => {
         this.availableTickets = availableTickets;
       });
-      
+
     } else {
       alert('Vendor data not found. Redirecting to login page.');
       this.router.navigate(['/login']);

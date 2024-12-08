@@ -60,6 +60,7 @@
     <div class="brand-logo"></div>
     <div class="brand-title">SpotlightSeats</div>
     <form class="inputs" #eventCreationForm="ngForm" (ngSubmit)="onSubmit()">
+      <label>AVAILABLE TICKET CAPACITY: {{availableTickets}}</label>
       <label>EVENT NAME</label>
       <input type="text" name="eventName" placeholder="enter event name here"  [(ngModel)]="event.eventName"/>
       <label>EVENT LOCATION</label>

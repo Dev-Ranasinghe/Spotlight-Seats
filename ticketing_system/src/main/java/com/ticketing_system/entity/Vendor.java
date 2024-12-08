@@ -1,5 +1,6 @@
 package com.ticketing_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -29,6 +30,7 @@ public class Vendor {
     private String vendorEmail;
     @Column(name = "vendor_password", nullable = false)
     private String vendorPassword;
+
     @OneToMany(mappedBy = "vendor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonManagedReference
     @ToString.Exclude // Prevent circular reference in toString

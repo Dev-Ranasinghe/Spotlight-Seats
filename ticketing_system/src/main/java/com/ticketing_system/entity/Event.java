@@ -67,6 +67,18 @@ public class Event {
         return eventId;
     }
 
+    public String getEventName() {
+        return eventName;
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public Integer getTicketPrice() {
+        return ticketPrice;
+    }
+
     public void setTotalTickets(Integer totalTickets) {
         this.totalTickets = totalTickets;
     }

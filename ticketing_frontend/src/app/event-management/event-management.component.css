@@ -4,29 +4,43 @@ input {
   caret-color: red;
 }
 
-body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #ecf0f3;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  place-items: center;
-  overflow: hidden;
-  font-family: poppins;
+.home-icon{
+    margin-left: 80px; 
+    margin-top: 15px; 
+    font-size: 30px; 
+    color: white;
+}
+
+html,body {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+header{
+    position: relative;
+    height: 10vh;
+    width: 100vw;
+    background-image: url(/image/footer-bg.jpg);
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+}
+
+.content-box{
+    min-height: 73vh;
+    width: 100vw;
 }
 
 .container {
-  position: relative;
-  width: 350px;
-  height: auto;
-  border-radius: 20px;
-  padding: 40px;
-  box-sizing: border-box;
-  background: #ecf0f3;
-  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    position: relative;
+    margin-top: 110px;
+    margin-bottom: 20px;
+    width: 380px;
+    height: auto;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
 .brand-logo {
@@ -96,18 +110,6 @@ button:hover {
   box-shadow: none;
 }
 
-a {
-  position: absolute;
-  font-size: 8px;
-  bottom: 4px;
-  right: 4px;
-  text-decoration: none;
-  color: black;
-  background: rgb(136, 207, 233);
-  border-radius: 10px;
-  padding: 2px;
-}
-
 h1 {
   position: absolute;
   top: 0;
@@ -155,12 +157,12 @@ body {
 }
 
 .animation-example {
-    position: fixed;
-    top: 50%;
+    position: absolute;
+    top: 52%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    height: 90vmin;
-    width: 90vmin;
+    height: 80vmin;
+    width: 80vmin;
 }
 
 .animation-example .item {
@@ -335,3 +337,38 @@ body {
     width: 50%;
     background: var(--color);
 }
+
+/*
+---------------------------------------------
+Footer Style
+--------------------------------------------- 
+*/
+
+footer {
+    background-color: #0071f8;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(/image/footer-bg.jpg);
+    min-height: 150px;
+    border-radius: 150px 150px 0px 0px;
+  }
+  
+  footer p {
+    text-align: center;
+    line-height: 90px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  footer p a {
+    color: #fff;
+    transition: all .3s;
+    position: relative;
+    z-index: 3;
+  }
+  
+  footer p a:hover {
+    opacity: 0.75;
+  }
+

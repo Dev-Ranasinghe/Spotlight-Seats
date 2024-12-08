@@ -30,21 +30,49 @@ export class PurchaseHistoryComponent implements OnInit{
     });
   }
 
+  // getPurchasesByCustomerId(): void {
+  //   if (this.customerId === null) {
+  //     console.error('Cannot fetch purchases without a valid customerId');
+  //     return;
+  //   }
+
+  //   this.purchaseService.getPurchasesByCustomerId(this.customerId).subscribe(
+  //     (data) => {
+  //       this.purchases = data;
+  //       console.log(this.purchases); // Debug log
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching purchases', error);
+  //     }
+  //   );
+  // }
+
+  
   getPurchasesByCustomerId(): void {
     if (this.customerId === null) {
       console.error('Cannot fetch purchases without a valid customerId');
       return;
     }
-
+  
     this.purchaseService.getPurchasesByCustomerId(this.customerId).subscribe(
       (data) => {
-        this.purchases = data;
-        console.log(this.purchases); // Debug log
+        // Transform data to match the old structure if needed
+        this.purchases = data.map((purchase: any) => ({
+          ...purchase,
+          event: {
+            eventName: purchase.eventName,
+            eventLocation: purchase.eventLocation,
+            ticketPrice: purchase.ticketPrice
+          }
+        }));
+        console.log('Fetched purchases:', this.purchases);
       },
       (error) => {
         console.error('Error fetching purchases', error);
       }
     );
   }
+  
+  
 
 }
