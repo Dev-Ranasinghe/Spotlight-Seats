@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
+input {
+  caret-color: red;
+}
+
+.home-icon{
+  margin-left: 80px; 
+  margin-top: 15px; 
+  font-size: 30px; 
+  color: white;
+}
+
+html,body {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+header{
+  position: relative;
+  height: 10vh;
+  width: 100vw;
+  background-image: url(/image/footer-bg.jpg);
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+
+.content-box{
+  min-height: 78vh;
+  width: 100vw;
+}
+
+.container {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 800px;
+    height: 830px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+.brand-logo {
+  height: 100px;
+  width: 100px;
+  background: url("/image/minimalist-blue-e0q5nh2rivmv9eio.jpg");
+  margin: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+}
+
+.brand-title {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #1DA1F2;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+label, input, button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+label{
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+  color: white;
+  margin-top: 20px;
+  background: #1DA1F2;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+
+button:hover {
+  box-shadow: none;
+}
+
+h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+---------------------------------------------
+Footer Style
+--------------------------------------------- 
+*/
+
+footer {
+  background-color: #0071f8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(/image/footer-bg.jpg);
+  min-height: 150px;
+  border-radius: 150px 150px 0px 0px;
+}
+
+footer p {
+  text-align: center;
+  line-height: 90px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+footer p a {
+  color: #fff;
+  transition: all .3s;
+  position: relative;
+  z-index: 3;
+}
+
+footer p a:hover {
+  opacity: 0.75;
+}
+
+/* Table styling */
+.table-3d {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  background: linear-gradient(145deg, #ecf0f3, #d9d9d9);
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #cbced1, -10px -10px 20px white;
+  overflow: hidden;
+}
+
+.table-3d th, .table-3d td {
+  padding: 15px 20px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(12,148,250);
+}
+
+.table-3d th {
+  background: linear-gradient(145deg, #e0e0e0, #ffffff);
+  box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px #cbced1;
+}
+
+.table-3d td {
+  background: linear-gradient(145deg, #f5f5f5, #e0e0e0);
+  box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px #cbced1;
+}
+
+.table-3d tr:not(:last-child) td {
+  border-bottom: 2px solid #d1d9e6;
+}
+
+.table-3d tr:hover td {
+  background: linear-gradient(145deg, #d1d9e6, #f5f5f5);
+  box-shadow: inset -2px -2px 5px #ffffff, inset 2px 2px 5px #cbced1;
+  transition: 0.3s;
+}
+
+.table-3d thead th {
+  text-align: center;
+}

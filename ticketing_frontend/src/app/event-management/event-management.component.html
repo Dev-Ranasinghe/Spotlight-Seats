@@ -3,7 +3,7 @@
 
 <header>
     <div class="navbar">
-      <a class="home-icon"><i class="fa-solid fa-house"></i></a>
+      <a class="home-icon"><i class="fa-solid fa-house" (click)="vendorDashboardDirect();"></i></a>
     </div>
 </header>  
  
@@ -65,7 +65,7 @@
         <label> TICKET PRICE: {{ eventTicketPrice }} </label>
         <label>TOTAL TICKETS: {{ eventTotalTickets }}</label>
         <button (click)="releaseTickets()">RELEASE TICKETS</button>
-        <button type="submit">EVENT ANALYTICS</button>
+        <button (click)="eventAnalyticsDirect();">EVENT ANALYTICS</button>
         <button *ngIf="eventId" (click)="deleteEvent(eventId, +eventTotalTickets)">DELETE EVENT</button>
         </form>
     </div> 

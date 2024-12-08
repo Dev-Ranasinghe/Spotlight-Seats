@@ -115,11 +115,28 @@ export class EventManagementComponent implements OnInit{
       },
     });
   }
-  
-  
 
   vendorDashboardDirect(){
     this.router.navigate(['/vendor-dashboard']);
   }
+
+  eventAnalyticsDirect(): void {
+    if (this.eventId === null) {
+      alert('Event ID is not available.');
+      return;
+    }
+  
+    this.router.navigate(['/event-analytics'], {
+      queryParams: {
+        eventId: this.eventId,
+        eventName: this.eventName,
+        eventLocation: this.eventLocation,
+        eventTotalTickets: this.eventTotalTickets,
+        eventTicketPrice: this.eventTicketPrice,
+        eventStatus: this.eventStatus,
+      },
+    });
+  }
+  
 
 }

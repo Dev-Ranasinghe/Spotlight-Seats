@@ -16,6 +16,7 @@ import { CustomerManagementComponent } from './customer-management/customer-mana
 import { SystemConfigComponent } from './system-config/system-config.component';
 import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
+import { EventAnalyticsComponent } from './event-analytics/event-analytics.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PurchaseHistoryComponent } from './purchase-history/purchase-history.co
     CustomerManagementComponent,
     SystemConfigComponent,
     TicketPurchaseComponent,
-    PurchaseHistoryComponent
+    PurchaseHistoryComponent,
+    EventAnalyticsComponent
   ],
   imports: [
     BrowserModule,

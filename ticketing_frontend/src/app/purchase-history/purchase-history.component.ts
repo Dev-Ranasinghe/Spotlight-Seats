@@ -71,8 +71,6 @@ export class PurchaseHistoryComponent implements OnInit{
         console.error('Error fetching purchases', error);
       }
     );
-  }
-  
-  
+  }  
 
 }
