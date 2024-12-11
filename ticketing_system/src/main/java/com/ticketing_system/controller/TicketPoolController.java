@@ -62,21 +62,6 @@ public class TicketPoolController {
         }
     }
 
-//    @CrossOrigin(origins = "http://localhost:4200") // Adjust as needed for your Angular app
-//    @PatchMapping("/event/{eventId}/decrement")
-//    public ResponseEntity<String> decrementReleasedTicketCount(
-//            @PathVariable Integer eventId,
-//            @RequestParam Integer decrementBy) {
-//        try {
-//            ticketPoolServiceImpl.decrementReleasedTicketCount(eventId, decrementBy);
-//            return ResponseEntity.ok("Decremented released tickets by " + decrementBy + " for Event ID " + eventId);
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
-//        }
-//    }
-
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/event/{eventId}/purchase")
     public ResponseEntity<String> createPurchase(

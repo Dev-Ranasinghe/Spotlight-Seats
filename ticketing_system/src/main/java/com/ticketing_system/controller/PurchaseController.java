@@ -38,11 +38,6 @@ public class PurchaseController {
         return purchaseServiceImpl.getPurchaseCountByCustomerId(customerId);
     }
 
-//    @GetMapping("/customer/{customerId}")
-//    public List<Purchase> getAllPurchasesByCustomerId(@PathVariable Integer customerId) {
-//        return purchaseServiceImpl.getAllPurchasesByCustomerId(customerId);
-//    }
-
     @GetMapping("/customer/{customerId}")
     public List<PurchaseDTO> getAllPurchasesByCustomerId(@PathVariable Integer customerId) {
         return purchaseServiceImpl.getAllPurchasesByCustomerId(customerId);

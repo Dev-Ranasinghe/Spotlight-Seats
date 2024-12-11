@@ -94,6 +94,17 @@ constructor(private loginService: LoginService, private router: Router, private 
   }
 
     onSignUp() {
+      // Validate email and contact number before checking for duplicates
+      if (!this.isValidEmail(this.signUpData.username)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      if (!this.isNumeric(this.signUpData.contact)) {
+        alert('Please enter a valid numeric contact number.');
+        return;
+      }
+
       // First, check if the email is already taken
       this.customerService.getAllCustomerEmails().subscribe(customerEmails => {
         this.vendorService.getAllVendorEmails().subscribe(vendorEmails => {
@@ -146,29 +157,37 @@ constructor(private loginService: LoginService, private router: Router, private 
           }
         });
       });
-  }
-
-  vendorDashboardDirect(){
-    this.router.navigate(['/vendor-dashboard']);
-  }
-
-  customerDashboardDirect(){
-    this.router.navigate(['/customer-dashboard'])
-  }
-
-
-  confirmAndSignUp(form: NgForm): void {
-    if (confirm('Are you sure you want to sign up with the provided details?')) {
-      if (form.valid) {
-        this.onSignUp();
-      } else {
-        alert('Please fill in all required fields.');
-      }
-    } else {
-      alert('Sign-up cancelled.');
     }
-  }
-  
-}
 
+    vendorDashboardDirect() {
+      this.router.navigate(['/vendor-dashboard']);
+    }
+
+    customerDashboardDirect() {
+      this.router.navigate(['/customer-dashboard']);
+    }
+
+    confirmAndSignUp(form: NgForm): void {
+      if (confirm('Are you sure you want to sign up with the provided details?')) {
+        if (form.valid) {
+          this.onSignUp();
+        } else {
+          alert('Please fill in all required fields.');
+        }
+      } else {
+        alert('Sign-up cancelled.');
+      }
+    }
+
+    // Helper function to validate email
+    private isValidEmail(email: string): boolean {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Helper function to validate numeric input
+    private isNumeric(value: string): boolean {
+      return !isNaN(Number(value)) && Number(value) >= 0;
+    }
+}
 

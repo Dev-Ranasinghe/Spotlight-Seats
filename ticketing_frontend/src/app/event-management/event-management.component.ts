@@ -120,23 +120,55 @@ export class EventManagementComponent implements OnInit{
     this.router.navigate(['/vendor-dashboard']);
   }
 
+  // eventAnalyticsDirect(): void {
+  //   if (this.eventId === null) {
+  //     alert('Event ID is not available.');
+  //     return;
+  //   }
+  
+  //   this.router.navigate(['/event-analytics'], {
+  //     queryParams: {
+  //       eventId: this.eventId,
+  //       eventName: this.eventName,
+  //       eventLocation: this.eventLocation,
+  //       eventTotalTickets: this.eventTotalTickets,
+  //       eventTicketPrice: this.eventTicketPrice,
+  //       eventStatus: this.eventStatus,
+  //     },
+  //   });
+  // }
   eventAnalyticsDirect(): void {
     if (this.eventId === null) {
       alert('Event ID is not available.');
       return;
     }
   
-    this.router.navigate(['/event-analytics'], {
-      queryParams: {
-        eventId: this.eventId,
-        eventName: this.eventName,
-        eventLocation: this.eventLocation,
-        eventTotalTickets: this.eventTotalTickets,
-        eventTicketPrice: this.eventTicketPrice,
-        eventStatus: this.eventStatus,
+    // Check if the event is active
+    this.eventService.isEventActive(this.eventId).subscribe({
+      next: (isActive: boolean) => {
+        if (isActive) {
+          // Navigate to event analytics if the event is active
+          this.router.navigate(['/event-analytics'], {
+            queryParams: {
+              eventId: this.eventId,
+              eventName: this.eventName,
+              eventLocation: this.eventLocation,
+              eventTotalTickets: this.eventTotalTickets,
+              eventTicketPrice: this.eventTicketPrice,
+              eventStatus: this.eventStatus,
+            },
+          });
+        } else {
+          alert('This event is not active. Analytics are only available for active events.');
+        }
+      },
+      error: (error) => {
+        console.error('Error checking event status:', error);
+        alert('Failed to check event status. Please try again.');
       },
     });
   }
+  
   
 
 }

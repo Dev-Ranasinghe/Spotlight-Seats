@@ -53,9 +53,6 @@ public class VendorController {
 
     @PostMapping
     public Vendor createVendor(@RequestBody Vendor vendor) {
-        // Create and start a thread to handle saving a new vendor
-//        VendorServiceImpl.VendorThread saveThread = vendorServiceImpl.new VendorThread("save", null, vendor);
-//        saveThread.start();
         return vendorServiceImpl.saveVendor(vendor);
     }
 
