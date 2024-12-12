@@ -76,6 +76,10 @@ export class AdminDashboardComponent implements OnInit{
     this.router.navigate(['/system-config']);
   }
 
+  simulationDirect(){
+    this.router.navigate(['/simulation']);
+  }
+
   loginDirect(){
     this.router.navigate(['/login'])
   }

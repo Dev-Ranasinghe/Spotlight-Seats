@@ -35,7 +35,7 @@ export class TicketPoolService {
 
     return this.http.post<string>(`${this.apiUrl}/event/${eventId}/purchase`, null, {
       params: params,
-      responseType: 'text' as 'json', // We expect plain text response
+      responseType: 'text' as 'json', 
     });
   }
 }

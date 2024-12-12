@@ -4,6 +4,22 @@ input {
   caret-color: red;
 }
 
+.log-display{
+    min-height: 500px;
+    border: 2px solid black;
+    margin: 50px 50px;
+}
+
+.logo {
+    color: white;
+    font-size: 35px;
+    font-weight: 400;
+    margin-left: 8vw;
+    margin-top: 8px;
+    font-family: 'Poppins';
+    font-size: 36px;
+  }
+
 .home-icon{
     margin-left: 80px; 
     margin-top: 15px; 
@@ -14,9 +30,6 @@ input {
 html,body {
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 header{
@@ -29,15 +42,15 @@ header{
 }
 
 .content-box{
-    height: 70vh;
+    height: auto;
     width: 100vw;
 }
 
 .container {
     position: relative;
-    margin-top: 140px;
+    margin-top: 20px;
     margin-bottom: 20px;
-    width: 350px;
+    width: 800px;
     height: auto;
     border-radius: 20px;
     padding: 40px;
@@ -62,6 +75,7 @@ header{
   font-size: 1.8rem;
   color: #1DA1F2;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .inputs {
@@ -167,7 +181,7 @@ body {
 
 .animation-example {
     position: absolute;
-    top: 52%;
+    top: 55%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     height: 80vmin;

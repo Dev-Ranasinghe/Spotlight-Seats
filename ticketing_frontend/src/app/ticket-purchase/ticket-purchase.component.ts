@@ -42,24 +42,24 @@ export class TicketPurchaseComponent implements OnInit{
         this.loadCustomerRetrievalRate();
         console.log(this.customerRetrievalRate);
 
-
         if (this.eventId !== null) {
           this.fetchReleasedTicketCount(this.eventId);
         }
     });
   }
 
-
   private fetchReleasedTicketCount(eventId: number): void {
     this.ticketPoolService.getReleasedTicketCount(eventId).subscribe({
-      next: (count) => (this.releasedTicketCount = count),
+      next: (count) => {
+        console.log("Fetched released ticket count: ", count);  // Log the count
+        this.releasedTicketCount = count;
+      },
       error: (error) => {
         console.error('Error fetching released ticket count:', error);
         this.errorMessage = 'Unable to retrieve ticket count. Please try again later.';
       }
     });
   }
-
 
   loadCustomerRetrievalRate(): void {
     this.configService.getCustomerRetrievalRate().subscribe(
@@ -80,7 +80,6 @@ export class TicketPurchaseComponent implements OnInit{
       }
     );
   }
-
 
   purchaseTickets(): void {
     if (!this.eventId || this.ticketCount <= 0) {
@@ -145,7 +144,6 @@ export class TicketPurchaseComponent implements OnInit{
       });
     }
   }
-  
 
   customerDashboardDirect(){
     this.router.navigate(['/customer-dashboard']);

@@ -17,6 +17,7 @@ import { SystemConfigComponent } from './system-config/system-config.component';
 import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 import { EventAnalyticsComponent } from './event-analytics/event-analytics.component';
+import { SimulationComponent } from './simulation/simulation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EventAnalyticsComponent } from './event-analytics/event-analytics.compo
     SystemConfigComponent,
     TicketPurchaseComponent,
     PurchaseHistoryComponent,
-    EventAnalyticsComponent
+    EventAnalyticsComponent,
+    SimulationComponent
   ],
   imports: [
     BrowserModule,

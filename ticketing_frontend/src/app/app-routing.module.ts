@@ -12,6 +12,7 @@ import { SystemConfigComponent } from './system-config/system-config.component';
 import { TicketPurchaseComponent } from './ticket-purchase/ticket-purchase.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 import { EventAnalyticsComponent } from './event-analytics/event-analytics.component';
+import { SimulationComponent } from './simulation/simulation.component';
 
 const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login by default
                         { path: 'login', component: LoginComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }, /
                         { path: 'ticket-purchase', component:TicketPurchaseComponent},
                         { path: 'purchase-history', component:PurchaseHistoryComponent},
                         { path: 'event-analytics', component:EventAnalyticsComponent},
+                        { path: 'simulation', component: SimulationComponent},
                         { path: 'customer-dashboard', component: CustomerDashboardComponent}];
 
 @NgModule({

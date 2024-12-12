@@ -1,0 +1,71 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<header>
+    <div class="navbar">
+      <a class="home-icon" (click)=adminDashboardDirect();><i class="fa-solid fa-house"></i></a>
+    </div>
+</header> 
+<div class="content-box">
+  <div class="container">
+    <div class="brand-logo"></div>
+    <div class="brand-title">System Configuration</div>
+
+    <!-- Single form for all inputs -->
+    <form class="inputs" (ngSubmit)="startSimulation()">
+      <!-- Total Tickets -->
+      <label for="totalTickets">TOTAL TICKETS</label>
+      <input
+        type="number"
+        name="totalNoOfTickets"
+        [(ngModel)]="config.totalNoOfTickets"
+        placeholder="Enter total tickets to be released"
+        required
+      />
+
+      <!-- Max Ticket Capacity -->
+      <label for="maxTicketCapacity">MAX TICKET CAPACITY</label>
+      <input
+        type="number"
+        name="maxTicketCapacity"
+        [(ngModel)]="config.maxTicketCapacity"
+        placeholder="Enter max ticket capacity"
+        required
+      />
+
+      <!-- Ticket Release Rate -->
+      <label for="ticketReleaseRate">TICKET RELEASE RATE</label>
+      <input
+        type="number"
+        name="ticketReleaseRate"
+        [(ngModel)]="config.ticketReleaseRate"
+        placeholder="Enter Ticket Release Rate"
+        required
+      />
+
+      <!-- Customer Retrieval Rate -->
+      <label for="customerRetrievalRate">CUSTOMER RETRIEVAL RATE</label>
+      <input
+        type="number"
+        name="customerRetrievalRate"
+        [(ngModel)]="config.customerRetrievalRate"
+        placeholder="Enter customer retrieval rate"
+        required
+      />
+
+      <!-- Submit Button for Starting Simulation -->
+      <button type="submit">Start Simulation</button>
+    </form>
+
+    <!-- Buttons to Start and Stop the Simulation -->
+    <button (click)="stopSimulation()">Stop Simulation</button>
+  </div>
+  
+</div>
+
+<footer>
+  <div >
+    <div class="col-lg-12">
+      <p>Copyright © SpotlightSeats. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

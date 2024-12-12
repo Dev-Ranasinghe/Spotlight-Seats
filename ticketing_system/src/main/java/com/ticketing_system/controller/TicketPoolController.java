@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")  // Allow requests only from your frontend URL
+//@CrossOrigin(origins = "http://localhost:4200")  // Allow requests only from your frontend URL
 @RestController
 @RequestMapping("/api/ticket-pool")
 
@@ -62,7 +62,6 @@ public class TicketPoolController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/event/{eventId}/purchase")
     public ResponseEntity<String> createPurchase(
             @PathVariable Integer eventId,
@@ -77,6 +76,4 @@ public class TicketPoolController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
         }
     }
-
-
 }
